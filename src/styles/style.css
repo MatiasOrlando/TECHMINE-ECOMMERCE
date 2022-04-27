@@ -1,4 +1,48 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(53, 48, 48);
+  height: 60px;
+}
+
+nav img {
+  border-radius: 50%;
+}
+
 h1 {
-  color: red;
+  color: white;
   font-size: 25px;
+}
+
+.ancorsNav {
+  display: flex;
+  color: white;
+  list-style-type: none;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+}
+
+.divAncorsNav {
+  align-items: center;
+  width: 700px;
+}
+
+.divBotonLupa {
+  margin-left: 200px;
+}
+
+.inputSearch {
+  margin-top: 8px;
+  height: 40px;
+  width: 400px;
+}
+
+.botonLupa {
+  height: 43px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
 }
