@@ -1,48 +1,21 @@
-nav {
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(53, 48, 48);
-  height: 60px;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-nav img {
+.logoBrand {
   border-radius: 50%;
+  height: 75px;
 }
 
-h1 {
-  color: white;
+#mainTitle {
   font-size: 25px;
+  padding-left: 10px;
 }
 
-.ancorsNav {
+.logosNavbar {
+  padding-right: 20px;
   display: flex;
-  color: white;
-  list-style-type: none;
   justify-content: space-evenly;
-  align-items: center;
-  height: 50px;
-}
-
-.divAncorsNav {
-  align-items: center;
-  width: 700px;
-}
-
-.divBotonLupa {
-  margin-left: 200px;
-}
-
-.inputSearch {
-  margin-top: 8px;
-  height: 40px;
-  width: 400px;
-}
-
-.botonLupa {
-  height: 43px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
+  width: 600px;
 }
