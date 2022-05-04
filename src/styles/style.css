@@ -39,3 +39,13 @@
 #mainSearchNav {
   padding-right: 30px;
 }
+
+.productsList {
+  margin-left: 300px;
+  margin-top: 50px;
+}
+
+.addCartProducts {
+  display: flex;
+  flex-direction: column;
+}
