@@ -1,0 +1,58 @@
+export const products = [
+  {
+    id: 0,
+    title: "VIDEO GEFORCE GT 210 1GB ARKTEK DDR3 LP",
+    stock: 5,
+    price: 6227,
+    image: "/images/gforcegt210.jpg",
+  },
+  {
+    id: 1,
+    title: "VIDEO GEFORCE GT 730 2GB GIGABYTE DDR3",
+    stock: 7,
+    price: 8800,
+    image: "/images/gforcegt730.jpg",
+  },
+  {
+    id: 2,
+    title: "VIDEO GEFORCE GT 1030 MSI 2GB LP OC DDR4",
+    stock: 4,
+    price: 22060,
+    image: "/images/gforcegt1030.jpg",
+  },
+  {
+    id: 3,
+    title: "VIDEO RADEON RX 550 4GB POWERCOLOR RED DRAGON",
+    stock: 3,
+    price: 31990,
+    image: "/images/radeonrx550.jpg",
+  },
+  {
+    id: 4,
+    title: "VIDEO RADEON RX 6500 XT 4GB ASUS DUAL O4G",
+    stock: 6,
+    price: 61000,
+    image: "/images/radeonrx6500.jpg",
+  },
+  {
+    id: 5,
+    title: "VIDEO GEFORCE GTX 1660 TI 6GB GIGABYTE OC",
+    stock: 5,
+    price: 71730,
+    image: "/images/gforcegtx1660.jpg",
+  },
+  {
+    id: 6,
+    title: "VIDEO RADEON RX 7000 XT 4GB GIGABYTE GAMING OC",
+    stock: 2,
+    price: 54990,
+    image: "/images/radeonrx7000.jpg",
+  },
+  {
+    id: 7,
+    title: "VIDEO RADEON RX 580 8GB POWERCOLOR RED DEVIL BULK ",
+    stock: 8,
+    price: 97990,
+    image: "/images/radeonrx580.jpg",
+  },
+];

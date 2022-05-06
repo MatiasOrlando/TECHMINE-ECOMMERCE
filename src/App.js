@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <ItemsListContainer title="PLACAS DE VIDEO" />
+      <ItemsListContainer title="Nuestros productos / PLACAS DE VIDEO" />
     </div>
   );
 }
