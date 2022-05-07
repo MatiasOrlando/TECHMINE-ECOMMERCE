@@ -3,6 +3,14 @@
   padding: 0;
 }
 
+.mainTitle {
+  font-size: 20px;
+  margin-left: 380px;
+  padding: 20px 20px;
+  font-family: "Roboto";
+  color: gray;
+}
+
 .logoBrand {
   border-radius: 50%;
   height: 75px;
@@ -48,4 +56,32 @@
 .addCartProducts {
   display: flex;
   flex-direction: column;
+}
+
+.price-promo {
+  color: #b7b7b7;
+  text-decoration: line-through;
+}
+
+.imgProduct {
+  height: 200px;
+  width: 170px;
+  padding: 10px;
+}
+.imgProductDiv {
+  width: 20%;
+}
+
+.padre {
+  display: flex;
+  flex-direction: row;
+  margin-left: 400px;
+  border: solid 1px rgb(230, 222, 222);
+  background-color: white;
+  width: 1000px;
+  height: 220px;
+}
+
+#root {
+  background-color: #ebebeb;
 }

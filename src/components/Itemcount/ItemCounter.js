@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Button } from "react-bootstrap";
+import { BsCart3 } from "react-icons/bs";
 
 export default function ItemCount() {
   const [count, setCount] = useState(1);
@@ -45,13 +46,25 @@ export default function ItemCount() {
   // Componente de presentación
   const AddButton = ({ handleOnSubmit }) => {
     return (
-      <Button
-        variant="primary"
-        className="add-button"
-        onClick={() => handleOnSubmit()}
-      >
-        Añadir al carrito
-      </Button>
+      <>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <Button
+            style={{
+              color: "#0077f9",
+              backgroundColor: "white",
+              borderRadius: "4px",
+            }}
+            className="add-button"
+            onClick={() => handleOnSubmit()}
+          >
+            Añadir al carrito
+            <BsCart3
+              style={{ height: "15px", width: "15px", color: "0077f9" }}
+            />
+          </Button>
+          <Button variant="primary">Comprar</Button>
+        </div>
+      </>
     );
   };
 

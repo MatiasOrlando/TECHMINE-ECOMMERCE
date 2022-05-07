@@ -1,12 +1,11 @@
 import React from "react";
 import Item from "../Item/Item";
-import { products } from "../../data/productos";
 
-export default function ListItem(products) {
+export default function ListItem({ productos }) {
   return (
     <>
       <div>
-        {products.map((product) => {
+        {productos.map((product) => {
           return <Item product={product} key={product.id} />;
         })}
       </div>
