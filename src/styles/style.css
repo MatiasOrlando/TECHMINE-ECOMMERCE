@@ -39,9 +39,28 @@
 }
 
 .styleLineNav {
-  background-image: linear-gradient(to bottom, red, rgb(226, 66, 66));
+  /* background-image: linear-gradient(to bottom, red, rgb(226, 66, 66)); */
   height: 3px;
   border: 0;
+  animation: BGcolorChanging-5colors 6s linear infinite alternate both;
+}
+
+@keyframes BGcolorChanging-5colors {
+  0% {
+    background: blue;
+  }
+  25% {
+    background: red;
+  }
+  50% {
+    background: violet;
+  }
+  75% {
+    background: yellow;
+  }
+  100% {
+    background: green;
+  }
 }
 
 #mainSearchNav {

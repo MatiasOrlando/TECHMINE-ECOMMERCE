@@ -3,9 +3,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { Button } from "react-bootstrap";
 import { BsCart3 } from "react-icons/bs";
 
-export default function ItemCount() {
+export default function ItemCount({ stock }) {
   const [count, setCount] = useState(1);
-  const stock = 10;
 
   const handleAddItem = () => {
     if (count < stock) {

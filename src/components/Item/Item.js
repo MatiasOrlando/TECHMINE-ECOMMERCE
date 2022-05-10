@@ -28,7 +28,7 @@ export default function Test({ product }) {
                   </span>
                 </div>
                 <div className="cta">
-                  <ItemCount />
+                  <ItemCount stock={product.stock} />
                 </div>
               </div>
             </div>
