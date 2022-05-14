@@ -15,6 +15,7 @@ import GforceLogo from "../../assets/logoGeforce/nav_geforce.png";
 import IntelLogo from "../../assets/logoIntel/nav_intel.png";
 import CorsairLogo from "../../assets/logoCorsair/nav_corsair.png";
 import TrustLogo from "../../assets/logoTrust/nav_trust.png";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -40,10 +41,26 @@ function NavBar() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="#">Inicio</Nav.Link>
-              <Nav.Link href="#">Tienda</Nav.Link>
-              <Nav.Link href="#">Nosotros</Nav.Link>
-              <Nav.Link href="#">Contacto</Nav.Link>
+              <Nav.Link>
+                <NavLink to="/home" className="navLinks">
+                  Inicio
+                </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/tienda" className="navLinks">
+                  Tienda
+                </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/nosotros" className="navLinks">
+                  Nosotros
+                </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/contacto" className="navLinks">
+                  Contacto
+                </NavLink>
+              </Nav.Link>
             </Nav>
             <Form className="d-flex" id="mainSearchNav">
               <FormControl

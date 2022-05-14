@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Button } from "react-bootstrap";
 import { BsCart3 } from "react-icons/bs";
 
 export default function ItemCount({ stock }) {
   const [count, setCount] = useState(1);
-
+  const [buttonDecreaseActive, setButtonDecreaseActive] = useState(false);
+  const [buttonAddActive, setButtonAddActive] = useState(false);
+  const [maxStock, setMaxStock] = useState(null);
   const handleAddItem = () => {
     if (count < stock) {
       setCount(count + 1);
+      setButtonDecreaseActive(true);
+    }
+    if (count === stock) {
+      setMaxStock("Ha alcanzado el numero maximo de stock disponible");
+      setButtonAddActive(true);
     }
   };
+
+  useEffect(() => {
+    if (count !== stock) {
+      setButtonAddActive(false);
+    }
+    if (count === 1) {
+      setButtonDecreaseActive(false);
+    }
+    if (count < stock) {
+      setMaxStock(null);
+    }
+  }, [count]);
 
   const handleDecrementItem = () => {
     if (count > 1) {
@@ -46,7 +65,14 @@ export default function ItemCount({ stock }) {
   const AddButton = ({ handleOnSubmit }) => {
     return (
       <>
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingRight: "40px",
+            marginTop: "30px",
+          }}
+        >
           <Button
             style={{
               color: "#0077f9",
@@ -69,17 +95,34 @@ export default function ItemCount({ stock }) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <div>
-        <button type="button" onClick={handleDecrementItem}>
+      <div className="itemCounter">
+        <button
+          type="button"
+          onClick={handleDecrementItem}
+          disabled={!buttonDecreaseActive}
+          className="btn btn-secondary"
+        >
           -
         </button>
-        <span>{count}</span>
-        <button type="button" onClick={handleAddItem}>
+        <div className="valueItem">
+          <div>
+            <p className="counterP">{count}</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={handleAddItem}
+          disabled={buttonAddActive}
+          className="btn btn-secondary"
+        >
           +
         </button>
       </div>
       <div>
         <AddButton handleOnSubmit={handleAddToCartButton} />
+        <div className="maxStock">
+          <p>{maxStock}</p>
+        </div>
       </div>
       <ToastContainer
         position="top-right"

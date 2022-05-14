@@ -39,7 +39,6 @@
 }
 
 .styleLineNav {
-  /* background-image: linear-gradient(to bottom, red, rgb(226, 66, 66)); */
   height: 3px;
   border: 0;
   animation: BGcolorChanging-5colors 6s linear infinite alternate both;
@@ -77,9 +76,13 @@
   flex-direction: column;
 }
 
-.price-promo {
+.price-promo,
+.price-old {
   color: #b7b7b7;
   text-decoration: line-through;
+}
+.price-old {
+  padding-left: 10px;
 }
 
 .imgProduct {
@@ -103,4 +106,161 @@
 
 #root {
   background-color: #ebebeb;
+}
+
+.detailDivProduct {
+  display: flex;
+  justify-content: center;
+}
+
+.detailProduct {
+  background-color: white;
+  width: 31.3%;
+  border: solid 1px rgb(230, 222, 222);
+}
+
+.detailPictureProduct {
+  border: solid 1px rgb(230, 222, 222);
+  background-color: white;
+  width: 45%;
+}
+
+.imagesProduct {
+  display: flex;
+  flex-direction: column;
+}
+
+.smallImagesProduct {
+  display: flex;
+  background-color: white;
+}
+
+.productDescription {
+  background-color: white;
+  border: solid 1px rgb(230, 222, 222);
+  width: 76.3%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.infoProductDescription {
+  display: flex;
+  justify-content: center;
+}
+
+.productCharacteristics {
+  width: 90%;
+  padding-left: 40px;
+  font-family: "Roboto";
+}
+
+.titleCharacteristics {
+  font-family: "Roboto";
+  font-size: 20px;
+  padding-left: 40px;
+}
+
+.titleDetailProduct {
+  font-family: "Roboto";
+  font-size: 20px;
+  margin-left: 170px;
+  padding: 20px 20px;
+  color: gray;
+}
+
+.shipping {
+  font-family: "Roboto";
+  text-align: center;
+}
+
+.tituloProducto {
+  font-family: "Roboto";
+  text-align: center;
+  padding-top: 50px;
+  font-weight: bold;
+}
+
+.price-main {
+  margin-left: 40px;
+  margin-top: 80px;
+  font-family: "roboto";
+  color: #0077f9;
+  font-size: 22px;
+}
+.price-mainLista {
+  margin-left: 40px;
+  margin-top: 10px;
+  font-family: "roboto";
+  color: #0077f9;
+  font-size: 20px;
+}
+.price {
+  display: flex;
+  font-size: 20px;
+}
+.price-mp {
+  padding-top: 20px;
+  margin-left: 40px;
+}
+.tag-stock {
+  padding: 5px;
+  color: #089900;
+  background-color: #5fff6e;
+  border-radius: 4px;
+  margin-left: 13px;
+}
+
+.tags {
+  font-size: 14px;
+  font-weight: lighter;
+  padding: 5px 8px;
+  margin: 15px 15px;
+}
+.itemCounter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.counterP {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.valueItem {
+  display: flex;
+  align-items: center;
+}
+
+.maxStock {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.buttonsToBuy {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 10px;
+}
+
+.priceInfo {
+  font-size: 25px;
+  font-family: "Roboto";
+}
+
+.titulosProductosLista {
+  padding-top: 20px;
+  font-weight: bold;
+  font-family: "Roboto";
+}
+
+.navLinks {
+  color: white;
+  text-decoration: none;
+}
+
+.navLinks:hover {
+  color: #0d6efd;
 }
