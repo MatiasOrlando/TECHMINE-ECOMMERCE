@@ -1,13 +1,15 @@
 import React from "react";
 import ItemsListContainer from "../../components/ItemsContainer/ProductsContainer";
 import { useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Category = () => {
   const { categoryId } = useParams();
   return (
-    <div>
-      <ItemsListContainer categoryId={categoryId} />
-    </div>
+    <ItemsListContainer
+      categoryId={categoryId}
+      title={`Nuestros productos /  ${categoryId}`}
+    />
   );
 };
 

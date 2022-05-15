@@ -9,25 +9,29 @@ const ItemDetail = ({ detailProduct }) => {
         <div className="detailPictureProduct">
           <div className="imagesProduct">
             <div>
-              <img src={detailProduct.image} alt="gforce gt 210" />
+              <img
+                src={detailProduct.image}
+                alt={detailProduct.title}
+                style={{ heigth: "600px", width: "500px" }}
+              />
             </div>
             <div className="smallImagesProduct">
               <div>
                 <img
                   src={detailProduct.imageb}
-                  alt="gforce gt 210 2"
+                  alt={detailProduct.title}
                   style={{ heigth: "162px", width: "162px" }}
                 />
               </div>
               <div>
                 <img
                   src={detailProduct.imagec}
-                  alt="gforce gt 210 3"
+                  alt={detailProduct.title}
                   style={{ heigth: "162px", width: "162px" }}
                 />
               </div>
             </div>
-            <div class="shipping">
+            <div className="shipping">
               LAS IMAGENES SON AL EFECTO MERAMENTE ILUSTRATIVO Y NO SON
               CONTRACTUALES
             </div>
