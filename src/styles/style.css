@@ -266,7 +266,6 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
-
   background: linear-gradient(
     to bottom,
     rgb(235, 233, 233) 0%,
@@ -313,6 +312,6 @@
   position: absolute;
   right: 4px;
   text-align: center;
-  top: 23px;
+  top: 29px;
   width: 18px;
 }

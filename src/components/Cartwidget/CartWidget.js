@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export default function CartWidget({ count }) {
+export default function CartWidget() {
   return (
     <>
       <NavLink to="/cart">

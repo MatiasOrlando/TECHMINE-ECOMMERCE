@@ -30,10 +30,15 @@ function NavBar() {
       </div>
       <Navbar bg="dark" expand="lg" variant="dark">
         <Container fluid>
-          <img src={LogoMarca} className="logoBrand" alt="logoBrand" />
+          <Nav.Link as="div">
+            <Link to="/home">
+              <img src={LogoMarca} className="logoBrand" alt="logoBrand" />{" "}
+            </Link>
+          </Nav.Link>
           <Navbar.Brand href="#" id="mainTitle">
             TECHMINE
           </Navbar.Brand>
+
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

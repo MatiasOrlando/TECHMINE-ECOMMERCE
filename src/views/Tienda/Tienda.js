@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Tienda() {
   return (
-    <div>
+    <div className="productosYCategorias">
       <div className="categoriasProductos">
         <NavLink to="/category/Placas-de-video" className="categorysLinks">
           Placas de Vídeo
@@ -16,7 +16,9 @@ export default function Tienda() {
           Discos SSD
         </NavLink>
       </div>
-      <ItemsListContainer title="Nuestros productos " />
+      <div className="tiendaProductos">
+        <ItemsListContainer title="Nuestros productos " />
+      </div>
     </div>
   );
 }
