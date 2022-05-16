@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import ListItem from "../ItemList/ItemList";
 import { dataBase } from "../../data/productos";
 import SpinnerLoader from "../LoadingSpinner/Spinner";
-import { NavLink } from "react-router-dom";
 
-export default function ItemsListContainer({ title, categoryId }) {
+export default function ItemsListContainer({ title, title2, categoryId }) {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
@@ -32,10 +31,8 @@ export default function ItemsListContainer({ title, categoryId }) {
 
   return (
     <>
-      <div style={{ marginTop: "40px" }}>
-        <NavLink to="/tienda" className="linkATienda">
-          <h1 className="mainTitle">{title}</h1>
-        </NavLink>
+      <div style={{ marginTop: "40px" }} className="tienda">
+        {title} / {title2}
       </div>
       {loading ? <SpinnerLoader /> : <ListItem productos={items} />}
     </>

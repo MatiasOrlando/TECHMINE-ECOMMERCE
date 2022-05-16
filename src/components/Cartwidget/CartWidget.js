@@ -1,11 +1,16 @@
-import { BsCart3 } from "react-icons/bs";
-import { Link } from "react-router-dom";
-export default function CartWidget() {
+import { NavLink } from "react-router-dom";
+
+export default function CartWidget({ count }) {
   return (
-    <span>
-      <Link to="/cart">
-        <BsCart3 style={{ height: "30px", width: "30px", color: "white" }} />
-      </Link>
-    </span>
+    <>
+      <NavLink to="/cart">
+        <img
+          src="/images/cartImg.png"
+          alt="Carrito"
+          style={{ height: "32px", width: "32px" }}
+        />
+        <div className="number">0</div>
+      </NavLink>
+    </>
   );
 }

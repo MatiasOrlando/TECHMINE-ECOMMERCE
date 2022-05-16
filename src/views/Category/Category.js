@@ -8,7 +8,12 @@ const Category = () => {
   return (
     <ItemsListContainer
       categoryId={categoryId}
-      title={`Nuestros productos /  ${categoryId}`}
+      title={
+        <NavLink to="/tienda" className="linkToAllProducts">
+          Nuestros productos
+        </NavLink>
+      }
+      title2={`${categoryId}`}
     />
   );
 };

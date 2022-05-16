@@ -16,7 +16,7 @@ export default function Tienda() {
           Discos SSD
         </NavLink>
       </div>
-      <ItemsListContainer title="Nuestros productos / " />
+      <ItemsListContainer title="Nuestros productos " />
     </div>
   );
 }

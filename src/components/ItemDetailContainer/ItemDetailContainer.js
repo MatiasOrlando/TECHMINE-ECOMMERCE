@@ -17,12 +17,12 @@ const ItemDetailContainer = ({ titleDetalleProducto, id }) => {
     <>
       <div style={{ marginTop: "60px" }}>
         <div className="titleDetailProduct" style={{ marginBottom: "5px" }}>
-          {titleDetalleProducto} /{" "}
+          {titleDetalleProducto} /
           <NavLink
             className="linkProductsCategorys"
             to={`/category/${detailProduct.categoryId}`}
           >
-            {detailProduct.categoryId}{" "}
+            {detailProduct.categoryId}
           </NavLink>
           / {detailProduct.title}
         </div>
