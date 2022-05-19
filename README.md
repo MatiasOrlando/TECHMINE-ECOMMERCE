@@ -2,9 +2,9 @@
 
 TECHMINE, es una aplicacion web e-commerce que le permite a sus usuarios poder acceder y comprar productos de alta calidad y rendimiento utilizados mayoritariamente para la industria del minado de criptomonedas como tambien para la industria del gaming online.
 
-## Available Scripts
+## DEMO
 
-In the project directory, you can run:
+<iframe src='//gifs.com/embed/techmine-app-6WyLVn' frameborder='0' scrolling='no' width='1600px' height='860px' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>
 
 ### Instalación 🔧
 
@@ -15,12 +15,14 @@ Abra [http://localhost:3000](http://localhost:3000) para verlo en su navegador.
 
 Este proyecto fue realizado por las siguientes tecnologías y librerias:
 
-React - Librería de Javascript
-Boostrap - Front End CSS Framework
-Reactstrap - Librería de componentes React para Bootstrap.
-Toastify - Libreria Pop-ups interactivos
-React Icons - Libreria de Iconos
-React Router Dom - Librería de componentes de navegación React
+<ul>
+<li>React - Librería de Javascript</li>
+<li>Boostrap - Front End CSS Framework</li>
+<li>Reactstrap - Librería de componentes React para Bootstrap.</li>
+<li>Toastify - Libreria Pop-ups interactivos</li>
+<li>React Icons - Libreria de Iconos</li>
+<li>React Router Dom - Librería de componentes de navegación React</li>
+</ul>
 
 ### `npm run build`
 
