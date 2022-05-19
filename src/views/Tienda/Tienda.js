@@ -1,18 +1,18 @@
 // import ItemDetailContainer from "../../components/ItemDetailContainer/ItemDetailContainer";
-import ItemsListContainer from "../../components/ItemsContainer/ProductsContainer";
+import ItemsListContainer from "../../components/ItemsListContainer/ProductsContainer";
 import { NavLink } from "react-router-dom";
 
 export default function Tienda() {
   return (
     <div className="productosYCategorias">
       <div className="categoriasProductos">
-        <NavLink to="/category/Placas-de-video" className="categorysLinks">
+        <NavLink to="/category/placas-de-video" className="categorysLinks">
           Placas de Vídeo
         </NavLink>
-        <NavLink to="/category/Procesadores" className="categorysLinks">
+        <NavLink to="/category/procesadores" className="categorysLinks">
           Procesadores
         </NavLink>
-        <NavLink to="/category/Discos-ssd" className="categorysLinks">
+        <NavLink to="/category/discos-ssd" className="categorysLinks">
           Discos SSD
         </NavLink>
       </div>

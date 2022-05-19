@@ -35,10 +35,11 @@ function NavBar() {
               <img src={LogoMarca} className="logoBrand" alt="logoBrand" />{" "}
             </Link>
           </Nav.Link>
-          <Navbar.Brand href="#" id="mainTitle">
-            TECHMINE
+          <Navbar.Brand>
+            <Link to="/home" id="mainTitle">
+              TECHMINE
+            </Link>
           </Navbar.Brand>
-
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

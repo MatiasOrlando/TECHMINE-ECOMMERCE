@@ -8,6 +8,7 @@ export default function ItemCount({ stock }) {
   const [buttonDecreaseActive, setButtonDecreaseActive] = useState(false);
   const [buttonAddActive, setButtonAddActive] = useState(false);
   const [maxStock, setMaxStock] = useState(null);
+
   const handleAddItem = () => {
     if (count < stock) {
       setCount(count + 1);

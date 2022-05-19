@@ -11,6 +11,8 @@
 #mainTitle {
   font-size: 25px;
   padding-left: 10px;
+  color: white;
+  text-decoration: none;
 }
 
 .logosNavbar {

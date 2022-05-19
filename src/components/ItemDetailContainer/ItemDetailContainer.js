@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { dataBase } from "../../data/productos";
 import { NavLink } from "react-router-dom";
+import SpinnerLoader from "../LoadingSpinner/Spinner";
+
 
 const ItemDetailContainer = ({ titleDetalleProducto, id }) => {
   const [detailProduct, setDetailProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     dataBase
       .then((res) => res.find((item) => item.id === +id))
       .then((res) => setDetailProduct(res))
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
   }, [id]);
+
+  const { title, categoryId } = detailProduct;
 
   return (
     <>
@@ -20,13 +27,17 @@ const ItemDetailContainer = ({ titleDetalleProducto, id }) => {
           {titleDetalleProducto} /
           <NavLink
             className="linkProductsCategorys"
-            to={`/category/${detailProduct.categoryId}`}
+            to={`/category/${categoryId}`}
           >
-            {detailProduct.categoryId}
+            {categoryId}
           </NavLink>
-          / {detailProduct.title}
+          / {title}
         </div>
-        <ItemDetail detailProduct={detailProduct} />
+        {loading ? (
+          <SpinnerLoader />
+        ) : (
+          <ItemDetail detailProduct={detailProduct} />
+        )}
       </div>
     </>
   );
