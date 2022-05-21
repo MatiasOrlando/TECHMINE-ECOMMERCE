@@ -62,7 +62,7 @@ const ItemDetail = ({ detailProduct }) => {
       setActiveAddToCartButton(count);
       setButtonDecreaseActive(false);
       setButtonAddActive(true);
-      setRedBorder(true);
+      setRedBorder(!redBorder);
     } else {
       toast.success(`Has añadido ${count} items al carrito`, {
         position: "top-right",
@@ -76,7 +76,7 @@ const ItemDetail = ({ detailProduct }) => {
       setActiveAddToCartButton(count);
       setButtonDecreaseActive(false);
       setButtonAddActive(true);
-      setRedBorder(true);
+      setRedBorder(!redBorder);
     }
   };
 

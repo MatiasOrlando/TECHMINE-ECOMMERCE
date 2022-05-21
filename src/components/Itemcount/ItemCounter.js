@@ -16,30 +16,38 @@ export default function ItemCount({
         justifyContent: "center",
       }}
     >
-      <div className="itemCounter">
-        <button
-          type="button"
-          onClick={handleDecrementItem}
-          disabled={!buttonDecreaseActive}
-          className="btn btn-secondary"
-        >
-          -
-        </button>
-        <div className="valueItem">
-          <p className="counterP">{count}</p>
-        </div>
-        <button
-          type="button"
-          onClick={handleAddItem}
-          disabled={buttonAddActive}
-          className="btn btn-secondary"
-        >
-          +
-        </button>
-      </div>
       <div>
-        <div className="maxStock">
-          <p>{maxStock}</p>
+        <div
+          className={redBorder ? "itemCounter2" : "ItemCounter"}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <div style={{ display: "flex" }}>
+            <button
+              type="button"
+              onClick={handleDecrementItem}
+              disabled={!buttonDecreaseActive}
+              className="btn btn-secondary"
+            >
+              -
+            </button>
+            <div className="valueItem">
+              <p className="counterP">{count}</p>
+            </div>
+            <button
+              type="button"
+              onClick={handleAddItem}
+              disabled={buttonAddActive}
+              className="btn btn-secondary"
+            >
+              +
+            </button>
+          </div>
+          <div className="maxStock">
+            <p>{maxStock}</p>
+          </div>
         </div>
       </div>
     </div>
