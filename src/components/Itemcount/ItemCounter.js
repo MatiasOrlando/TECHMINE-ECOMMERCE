@@ -14,6 +14,7 @@ export default function ItemCount({
       style={{
         display: "flex",
         justifyContent: "center",
+        marginBottom: "80px",
       }}
     >
       <div>
@@ -24,6 +25,8 @@ export default function ItemCount({
             justifyContent: "center",
           }}
         >
+          {/* Si existe maxStock quiero que el div tenga estas propiedades
+          flex-direction: column; width: 300px; padding: 3%; */}
           <div style={{ display: "flex" }}>
             <button
               type="button"

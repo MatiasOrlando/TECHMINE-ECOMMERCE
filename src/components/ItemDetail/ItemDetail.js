@@ -63,6 +63,7 @@ const ItemDetail = ({ detailProduct }) => {
       setButtonDecreaseActive(false);
       setButtonAddActive(true);
       setRedBorder(!redBorder);
+      setMaxStock("");
     } else {
       toast.success(`Has añadido ${count} items al carrito`, {
         position: "top-right",
@@ -77,6 +78,7 @@ const ItemDetail = ({ detailProduct }) => {
       setButtonDecreaseActive(false);
       setButtonAddActive(true);
       setRedBorder(!redBorder);
+      setMaxStock("");
     }
   };
 
