@@ -1,6 +1,6 @@
 const products = [
   {
-    id: 0,
+    id: 1,
     title: "VIDEO GEFORCE GT 210 1GB ARKTEK DDR3 LP",
     stock: 5,
     price: 6227,
@@ -13,7 +13,7 @@ const products = [
     categoryId: "placas-de-video",
   },
   {
-    id: 1,
+    id: 2,
     title: "VIDEO GEFORCE GT 730 2GB GIGABYTE DDR3",
     stock: 7,
     price: 8800,
@@ -26,7 +26,7 @@ const products = [
     categoryId: "placas-de-video",
   },
   {
-    id: 2,
+    id: 3,
     title: "MICRO INTEL CELERON G5905 DC 3.5GHZ ",
     stock: 4,
     price: 7238,
@@ -39,7 +39,7 @@ const products = [
     categoryId: "procesadores",
   },
   {
-    id: 3,
+    id: 4,
     title: "VIDEO RADEON RX 550 4GB PWRD DRAGON",
     stock: 3,
     price: 32591,
@@ -52,7 +52,7 @@ const products = [
     categoryId: "placas-de-video",
   },
   {
-    id: 4,
+    id: 5,
     title: "HD SSD 256GB M2 ADATA XPG SPECTRIX S40G NVME",
     stock: 2,
     price: 9980,
@@ -65,7 +65,7 @@ const products = [
     categoryId: "discos-ssd",
   },
   {
-    id: 5,
+    id: 6,
     title: "VIDEO GEFORCE GTX 1660 TI 6GB ROCKET OC",
     stock: 5,
     price: 74390,
@@ -78,7 +78,7 @@ const products = [
     categoryId: "placas-de-video",
   },
   {
-    id: 6,
+    id: 7,
     title: "VIDEO RADEON RX 7000 XT 4GB  GAMING OC",
     stock: 2,
     price: 52990,
@@ -91,7 +91,7 @@ const products = [
     categoryId: "placas-de-video",
   },
   {
-    id: 7,
+    id: 8,
     title: "HD SSD 120GB GIGABYTE",
     stock: 3,
     price: 3360,
@@ -104,7 +104,7 @@ const products = [
     categoryId: "discos-ssd",
   },
   {
-    id: 8,
+    id: 9,
     title: "VIDEO GEFORCE GT 1030 MSI 2GB LOCK DDR4",
     stock: 4,
     price: 22060,
@@ -117,7 +117,7 @@ const products = [
     categoryId: "placas-de-video",
   },
   {
-    id: 9,
+    id: 10,
     title: "MICRO INTEL CELERON G5925 S1200",
     stock: 5,
     price: 7890,
@@ -130,7 +130,7 @@ const products = [
     categoryId: "procesadores",
   },
   {
-    id: 10,
+    id: 11,
     title: "MICRO AMD RYZEN 3 4100 S/VIDEO BULK",
     stock: 2,
     price: 16577,
@@ -143,7 +143,7 @@ const products = [
     categoryId: "procesadores",
   },
   {
-    id: 11,
+    id: 12,
     title: "HD SSD 120GB MARKVISION SATA III 2.5 BULK",
     stock: 4,
     price: 2830,
@@ -156,7 +156,7 @@ const products = [
     categoryId: "discos-ssd",
   },
   {
-    id: 12,
+    id: 13,
     title: "VIDEO RADEON RX 580 8GB  RED DEVIL BULK ",
     stock: 8,
     price: 89990,
@@ -169,7 +169,7 @@ const products = [
     categoryId: "placas-de-video",
   },
   {
-    id: 13,
+    id: 14,
     title: "VIDEO RADEON RX 6500 XT 4GB ASUS DX O4G",
     stock: 6,
     price: 60058,

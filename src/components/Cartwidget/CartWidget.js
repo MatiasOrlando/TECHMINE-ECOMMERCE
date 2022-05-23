@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { contexto } from "../CustomProvider/CustomProvider";
 
 export default function CartWidget() {
+  const { cart } = useContext(contexto);
+
   return (
     <>
       <NavLink to="/cart">
@@ -9,7 +13,7 @@ export default function CartWidget() {
           alt="Carrito"
           style={{ height: "32px", width: "32px" }}
         />
-        <div className="number">0</div>
+        <div className="number">{cart.length}</div>
       </NavLink>
     </>
   );

@@ -8,21 +8,24 @@ import Nosotros from "./views/Nosotros/Nosotros";
 import Cart from "./views/Cart/Cart";
 import Product from "./views/Product/Product";
 import Category from "./views/Category/Category";
+import CustomProvider from "./components/CustomProvider/CustomProvider";
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/home" element={<Home />} />
-        <Route exact path="/tienda" element={<Tienda />} />
-        <Route exact path="/product/:id" element={<Product />} />
-        <Route exact path="/category/:categoryId" element={<Category />} />
-        <Route exact path="/nosotros" element={<Nosotros />} />
-        <Route exact path="/contacto" element={<Contacto />} />
-        <Route exact path="/cart" element={<Cart />} />
-      </Routes>
+      <CustomProvider>
+        <NavBar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/tienda" element={<Tienda />} />
+          <Route exact path="/product/:id" element={<Product />} />
+          <Route exact path="/category/:categoryId" element={<Category />} />
+          <Route exact path="/nosotros" element={<Nosotros />} />
+          <Route exact path="/contacto" element={<Contacto />} />
+          <Route exact path="/cart" element={<Cart />} />
+        </Routes>
+      </CustomProvider>
     </BrowserRouter>
   );
 }

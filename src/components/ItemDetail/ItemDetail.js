@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ItemCount from "../Itemcount/ItemCounter";
 import { Carousel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import { BsCart3 } from "react-icons/bs";
 import { toast, ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react";
+import { contexto } from "../CustomProvider/CustomProvider";
 
 const ItemDetail = ({ detailProduct }) => {
   const { image, imageb, imagec, title, price, oldprice, stock, description } =
@@ -18,6 +19,8 @@ const ItemDetail = ({ detailProduct }) => {
   const [maxStock, setMaxStock] = useState(null);
   const [activeAddToCartButton, setActiveAddToCartButton] = useState(0);
   const [redBorder, setRedBorder] = useState(false);
+
+  const { addToCart, deleteFromCart } = useContext(contexto);
 
   const handleAddItem = (count) => {
     if (count < stock) {
@@ -83,7 +86,7 @@ const ItemDetail = ({ detailProduct }) => {
   };
 
   // Componente de presentación
-  const AddButton = ({ handleOnSubmit }) => {
+  const AddButton = ({ onSubmit }) => {
     return (
       <>
         <div
@@ -101,7 +104,7 @@ const ItemDetail = ({ detailProduct }) => {
               borderRadius: "4px",
             }}
             className="add-button"
-            onClick={() => handleOnSubmit()}
+            onClick={onSubmit}
           >
             Añadir al carrito
             <BsCart3
@@ -198,9 +201,12 @@ const ItemDetail = ({ detailProduct }) => {
               </button>
             </div>
           ) : (
-            <AddButton handleOnSubmit={() => handleOnSubmit(count)} />
+            <AddButton onSubmit={() => addToCart(detailProduct)} />
           )}
         </div>
+        <button onClick={() => deleteFromCart(detailProduct.id)}>
+          Delete{" "}
+        </button>
       </div>
       <div className="infoProductDescription">
         <div className="productDescription">
@@ -218,7 +224,7 @@ const ItemDetail = ({ detailProduct }) => {
       >
         <button
           style={{ marginBottom: "20px" }}
-          className="btn btn-success"
+          className="btn btn-light"
           onClick={() => navegarATienda("/tienda")}
         >
           Volver a la Tienda
