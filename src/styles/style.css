@@ -397,3 +397,98 @@
   justify-content: center;
   margin-bottom: 5px;
 }
+
+.card1 {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  margin: 0 0 10px;
+  padding: 85px 25px 25px;
+  text-align: center;
+  transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  background-image: url("C:\Users\User\Desktop\React JS\Mi primer proyecto\minetech\public\images\backImgAmd.png");
+}
+
+.card2 {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  margin: 0 0 10px;
+  padding: 85px 25px 25px;
+  text-align: center;
+  transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  background-image: url("C:\Users\User\Desktop\React JS\Mi primer proyecto\minetech\public\images\backImgCore.png");
+}
+.card3 {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  margin: 0 0 10px;
+  padding: 85px 25px 25px;
+  text-align: center;
+  transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  background-image: url("C:\Users\User\Desktop\React JS\Mi primer proyecto\minetech\public\images\backImgSsd.png");
+}
+
+.logo1,
+.logo2,
+.logo3 {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  margin: 0 0 25px;
+  padding: 5px;
+  width: 160px;
+}
+
+.products {
+  display: flex;
+}
+
+.btn-clean {
+  color: #0077f9;
+  text-decoration: none;
+  font-family: "Roboto";
+}
+
+.categoryCards {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 50px;
+  margin-top: 150px;
+}
+
+.homeImg {
+  display: flex;
+  justify-content: space-evenly;
+  padding-right: 100px;
+  margin-top: 100px;
+  width: 780px;
+}
+
+.homeImgParent {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 9px;
+}
+
+.imgBlockChain {
+  padding-left: 200px;
+  width: 1200px;
+}

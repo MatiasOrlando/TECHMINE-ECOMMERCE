@@ -25,7 +25,8 @@ const CustomProvider = ({ children }) => {
       const updatedCart = cart.map((productCart) => {
         if (productCart.id === id) {
           if (productCart.quantity === 1) {
-            removeProduct(productCart.id);
+            let index = cart.findIndex((el) => el.id === id);
+            cart.splice(index, 1);
           } else {
             productCart.quantity--;
           }
