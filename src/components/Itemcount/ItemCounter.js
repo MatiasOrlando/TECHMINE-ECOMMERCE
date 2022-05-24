@@ -50,7 +50,13 @@ export default function ItemCount({
           </div>
         </div>
         <div className="maxStock">
-          <p>{maxStock}</p>
+          {maxStock === null ? (
+            <p style={{ color: "transparent" }}>
+              lorem lorem lorem lorem lorem{" "}
+            </p>
+          ) : (
+            <p>{maxStock}</p>
+          )}
         </div>
       </div>
     </div>

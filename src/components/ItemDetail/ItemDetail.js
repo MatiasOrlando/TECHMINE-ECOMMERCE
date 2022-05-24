@@ -20,7 +20,7 @@ const ItemDetail = ({ detailProduct }) => {
   const [activeAddToCartButton, setActiveAddToCartButton] = useState(0);
   const [redBorder, setRedBorder] = useState(false);
 
-  const { addToCart, deleteFromCart } = useContext(contexto);
+  const { addToCart, removeProduct, deleteQtyFromCart } = useContext(contexto);
 
   const handleAddItem = (count) => {
     if (count < stock) {
@@ -177,6 +177,9 @@ const ItemDetail = ({ detailProduct }) => {
           <div className="price-main">
             ¡12 cuotas de ${(price / 12).toFixed(2)}!
           </div>
+          <button onClick={() => deleteQtyFromCart(detailProduct.id)}>
+            Delete{" "}
+          </button>
           <div className="tags">
             <span className="tag tag-stock">En stock</span>
           </div>
@@ -204,9 +207,6 @@ const ItemDetail = ({ detailProduct }) => {
             <AddButton onSubmit={() => addToCart(detailProduct)} />
           )}
         </div>
-        <button onClick={() => deleteFromCart(detailProduct.id)}>
-          Delete{" "}
-        </button>
       </div>
       <div className="infoProductDescription">
         <div className="productDescription">

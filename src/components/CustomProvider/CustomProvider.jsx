@@ -20,23 +20,25 @@ const CustomProvider = ({ children }) => {
     }
   };
 
-  const deleteFromCart = (id) => {
+  const deleteQtyFromCart = (id) => {
     if (isInCart(id)) {
       const updatedCart = cart.map((productCart) => {
         if (productCart.id === id) {
-          if (productCart.quantity > 1) {
-            productCart.quantity--;
+          if (productCart.quantity === 1) {
+            removeProduct(productCart.id);
           } else {
-            let index = cart.findIndex((element) => element.id === id);
-            console.log(index);
-            cart.slice(index, 1);
-            console.log(cart);
+            productCart.quantity--;
           }
+          return productCart;
         }
-        return productCart;
       });
       setCart(updatedCart);
     }
+  };
+
+  const removeProduct = (id) => {
+    const newCart = cart.filter((productCart) => productCart.id !== id);
+    setCart(newCart);
   };
 
   const deleteAll = () => {
@@ -46,11 +48,13 @@ const CustomProvider = ({ children }) => {
   const isInCart = (id) => {
     return cart.find((product) => product.id === id);
   };
+  console.log(cart);
 
   const valueContext = {
     cart: cart,
     addToCart: addToCart,
-    deleteFromCart: deleteFromCart,
+    deleteQtyFromCart: deleteQtyFromCart,
+    removeProduct: removeProduct,
     deleteAll: deleteAll,
     isInCart: isInCart,
   };
