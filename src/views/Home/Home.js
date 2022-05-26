@@ -25,13 +25,13 @@ export default function Home() {
         <div className="item" style={{ width: "320px" }}>
           <div className="card1">
             <div className="logo1">
-              <img src="/images/logoHomeAmd.png" alt="AMD" />
+              <img src="/images/logoHomeGforce.png" alt="AMD" />
             </div>
             <div className="products">
               <div className="item">
                 <a href="#">
                   <img
-                    src="/images/ryzen5600.jpg"
+                    src="/images/gt1030.jpg"
                     alt="micro-amd-ryzen-5-5600g"
                     style={{ width: "90px", height: "90px" }}
                   />
@@ -40,7 +40,7 @@ export default function Home() {
               <div className="item">
                 <a href="#">
                   <img
-                    src="/images/radeon6600.jpg"
+                    src="/images/gtrtx3090.jpg"
                     alt="video-radeon-rx-6600-msi-armor-2x"
                     style={{ width: "90px", height: "90px" }}
                   />
@@ -49,8 +49,8 @@ export default function Home() {
               <div className="item">
                 <a href="#">
                   <img
-                    src="/images/ryzen5700.jpg"
-                    alt="micro-amd-ryzen-7-5700g"
+                    src="/images/gtx1650.jpg"
+                    alt="Gforce gtx1650"
                     style={{ width: "90px", height: "90px" }}
                   />
                 </a>
@@ -73,7 +73,7 @@ export default function Home() {
                 <a href="#">
                   <img
                     src="/images/intelg5400.jpg"
-                    alt="intelg5400"
+                    alt="intel g5400"
                     style={{ width: "90px", height: "90px" }}
                   />
                 </a>

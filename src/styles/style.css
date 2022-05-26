@@ -295,9 +295,24 @@
   padding: 20px 20px;
   font-family: "Roboto";
   color: gray;
+  margin-top: 40px;
+}
+.carrito {
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 215px;
+  padding: 20px 20px;
+  font-family: "Roboto";
+  color: gray;
+  margin-top: 40px;
 }
 
 .linkToAllProducts {
+  color: gray;
+  text-decoration: none;
+}
+
+.linkToHome {
   color: gray;
   text-decoration: none;
 }
@@ -410,7 +425,7 @@
   transition: all ease 0.2s;
   -moz-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
-  background-image: url("C:\Users\User\Desktop\React JS\Mi primer proyecto\minetech\public\images\backImgAmd.png");
+  background-image: url("C:\Users\User\Desktop\React JS\Mi primer proyecto\minetech\public\images\backImgGforce.png");
 }
 
 .card2 {
@@ -491,4 +506,118 @@
 .imgBlockChain {
   padding-left: 200px;
   width: 1200px;
+}
+
+.itemCart {
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  padding: 30px 0;
+  background-color: #fff;
+  width: 70%;
+}
+.itemCart2 {
+  align-items: flex-end;
+  border: 1px solid #eaeaea;
+  display: flex;
+  padding: 30px 0;
+  background-color: #fff;
+  width: 70%;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.itemCart3 {
+  align-items: flex-end;
+  border: 1px solid #eaeaea;
+  display: flex;
+  padding: 30px 0;
+  background-color: #fff;
+  width: 70%;
+  justify-content: flex-end;
+}
+.totalPrice {
+  margin-right: 260px;
+  font-family: "Roboto";
+}
+
+.imageItemCart {
+  max-width: 100%;
+}
+
+.cartView {
+  display: flex;
+  justify-content: center;
+}
+
+.deleteItem {
+  list-style-type: none;
+  padding-top: 30px;
+  font-family: "Roboto";
+  color: #0077f9;
+}
+
+.metal {
+  display: flex;
+  justify-content: space-around;
+  width: 800px;
+}
+
+.itemPrice {
+  padding-top: 1px;
+  font-family: "Roboto";
+  font-size: 20px;
+}
+
+.purchaseTitle {
+  font-family: "Roboto";
+  color: black;
+  text-decoration: none;
+}
+
+.carritoBack {
+  height: 1000vh;
+  background-color: #ebebeb;
+}
+
+.cart .item.end .cta button {
+  margin: 0 0 0 10px;
+}
+#emptyCard:hover,
+#emptyCard:hover {
+  background-color: #0077f9;
+  border: 2px solid #0077f9;
+  color: #fff;
+  transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+}
+
+#emptyCard {
+  color: #0077f9;
+  background-color: #fff;
+  border: 2px solid #0077f9;
+}
+
+.stylesButtonsCart {
+  display: flex;
+  width: 350px;
+  justify-content: space-around;
+}
+
+.cartCounter {
+  display: flex;
+  width: 350px;
+  justify-content: flex-end;
+}
+
+.buttonDecrease {
+  background-color: transparent;
+  border: 0;
+  color: #0077f9;
+  font-size: 16px;
+  outline: 0;
+  padding: 10px;
+  transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
 }

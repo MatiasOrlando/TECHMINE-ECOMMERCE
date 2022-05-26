@@ -7,7 +7,7 @@ export default function CartWidget() {
 
   return (
     <>
-      <NavLink to="/cart">
+      <NavLink to={cart.length >= 1 ? "/cart" : "/tienda"}>
         <img
           src="/images/cartImg.png"
           alt="Carrito"

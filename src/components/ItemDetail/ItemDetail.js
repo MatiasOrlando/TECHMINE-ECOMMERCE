@@ -4,7 +4,7 @@ import { Carousel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { BsCart3 } from "react-icons/bs";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react";
 import { contexto } from "../CustomProvider/CustomProvider";
 
@@ -14,19 +14,25 @@ const ItemDetail = ({ detailProduct }) => {
   const navegarATienda = useNavigate();
   const navegarACart = useNavigate();
   const [count, setCount] = useState(1);
-  const [buttonDecreaseActive, setButtonDecreaseActive] = useState(false);
-  const [buttonAddActive, setButtonAddActive] = useState(false);
-  const [maxStock, setMaxStock] = useState(null);
-  const [activeAddToCartButton, setActiveAddToCartButton] = useState(0);
-  const [redBorder, setRedBorder] = useState(false);
 
-  const { addToCart, removeProduct, deleteQtyFromCart } = useContext(contexto);
+  const {
+    addToCart,
+    setButtonAddActive,
+    setButtonDecreaseActive,
+    buttonAddActive,
+    buttonDecreaseActive,
+    activeAddToCartButton,
+    redBorder,
+    maxStock,
+    setMaxStock,
+  } = useContext(contexto);
 
   const handleAddItem = (count) => {
     if (count < stock) {
       setCount(count + 1);
       setButtonDecreaseActive(true);
     }
+
     if (count === stock) {
       setMaxStock("Ha alcanzado el numero maximo de stock disponible");
       setButtonAddActive(true);
@@ -50,40 +56,6 @@ const ItemDetail = ({ detailProduct }) => {
       setMaxStock(null);
     }
   }, [count]);
-
-  const handleOnSubmit = (count) => {
-    if (count === 1) {
-      toast.success(`Has añadido ${count} item al carrito`, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      setActiveAddToCartButton(count);
-      setButtonDecreaseActive(false);
-      setButtonAddActive(true);
-      setRedBorder(!redBorder);
-      setMaxStock("");
-    } else {
-      toast.success(`Has añadido ${count} items al carrito`, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      setActiveAddToCartButton(count);
-      setButtonDecreaseActive(false);
-      setButtonAddActive(true);
-      setRedBorder(!redBorder);
-      setMaxStock("");
-    }
-  };
 
   // Componente de presentación
   const AddButton = ({ onSubmit }) => {
@@ -177,9 +149,6 @@ const ItemDetail = ({ detailProduct }) => {
           <div className="price-main">
             ¡12 cuotas de ${(price / 12).toFixed(2)}!
           </div>
-          <button onClick={() => deleteQtyFromCart(detailProduct.id)}>
-            Delete{" "}
-          </button>
           <div className="tags">
             <span className="tag tag-stock">En stock</span>
           </div>
@@ -204,7 +173,7 @@ const ItemDetail = ({ detailProduct }) => {
               </button>
             </div>
           ) : (
-            <AddButton onSubmit={() => addToCart(detailProduct)} />
+            <AddButton onSubmit={() => addToCart(detailProduct, count)} />
           )}
         </div>
       </div>

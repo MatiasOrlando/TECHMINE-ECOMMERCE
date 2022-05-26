@@ -27,7 +27,7 @@ const products = [
   },
   {
     id: 3,
-    title: "MICRO INTEL CELERON G5905 DC 3.5GHZ ",
+    title: "MICRO INTEL CELERON G5905 NT DC 3.5GHZ ",
     stock: 4,
     price: 7238,
     oldprice: 12900,
@@ -53,7 +53,7 @@ const products = [
   },
   {
     id: 5,
-    title: "HD SSD 256GB M2 ADATA XPG SPECTRIX S40G NVME",
+    title: "HD SSD 256GB M2 XPG SPECTRIX S40G NVME",
     stock: 2,
     price: 9980,
     oldprice: 11900,
@@ -92,7 +92,7 @@ const products = [
   },
   {
     id: 8,
-    title: "HD SSD 120GB GIGABYTE",
+    title: "HD SSD 120GB GIGABYTE MB/S  BURST ELITE",
     stock: 3,
     price: 3360,
     oldprice: 6900,
@@ -118,7 +118,7 @@ const products = [
   },
   {
     id: 10,
-    title: "MICRO INTEL CELERON G5925 S1200",
+    title: "MICRO INTEL CELERON G5925 S/VIDEO S1200",
     stock: 5,
     price: 7890,
     oldprice: 14900,
