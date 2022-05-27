@@ -18,7 +18,7 @@ export default function Cart() {
       ))}
       <div className="cartView">
         <div className="itemCart2">
-          <p className="totalPrice">Productos: $ </p>
+          <p className="totalPrice">Productos: </p>
           <p className="totalPrice">Subtotal: $ </p>
           <p className="totalPrice">Total: $</p>
         </div>

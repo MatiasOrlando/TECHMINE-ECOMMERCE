@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { contexto } from "../CustomProvider/CustomProvider";
 
 const CartItemCounter = ({ purchase }) => {
-  const { reduceQty, addToCart, cart, removeProduct } = useContext(contexto);
+  const { reduceQty, addToCartCounter, cart, removeProduct } =
+    useContext(contexto);
   const [cartCounter, setCartCounter] = useState(purchase.quantity);
   useEffect(() => {
     setCartCounter(purchase.quantity);
@@ -10,7 +11,7 @@ const CartItemCounter = ({ purchase }) => {
 
   const increaseQty = () => {
     if (cartCounter < purchase.stock) {
-      addToCart(purchase, 1);
+      addToCartCounter(purchase, 1);
       setCartCounter((count) => (count = purchase.quantity));
     }
   };
@@ -51,7 +52,7 @@ const CartItemCounter = ({ purchase }) => {
       <button
         onClick={increaseQty}
         className="buttonDecrease"
-        style={{ fontSize: "30px" }}
+        style={{ fontSize: "28px" }}
       >
         +
       </button>
