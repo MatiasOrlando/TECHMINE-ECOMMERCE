@@ -11,6 +11,8 @@ const CustomProvider = ({ children }) => {
   const [activeAddToCartButton, setActiveAddToCartButton] = useState(0);
   const [redBorder, setRedBorder] = useState(false);
   const [maxStock, setMaxStock] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  console.log(searchTerm);
 
   const handleOnSubmit = (count) => {
     if (count === 1) {
@@ -120,6 +122,8 @@ const CustomProvider = ({ children }) => {
     setRedBorder: setRedBorder,
     maxStock: maxStock,
     setMaxStock: setMaxStock,
+    setSearchTerm: setSearchTerm,
+    searchTerm: searchTerm,
   };
 
   return <Provider value={valueContext}>{children}</Provider>;

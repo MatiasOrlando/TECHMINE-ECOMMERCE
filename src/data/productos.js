@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   {
     id: 1,
     title: "VIDEO GEFORCE GT 210 1GB ARKTEK DDR3 LP",

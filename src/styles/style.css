@@ -621,3 +621,40 @@
   -moz-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
 }
+
+.dropdown {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+}
+
+.dropdown:empty {
+  border: none;
+}
+.dropdown-row {
+  cursor: pointer;
+  text-align: start;
+  margin: 2px 0;
+  background: white;
+  border-bottom: 1px solid #d8d8d8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  width: 300px;
+  font-size: 12px;
+  height: 25px;
+}
+
+.test {
+  display: flex;
+}
+
+.productsFiltered {
+  display: flex;
+  flex-direction: column;
+}

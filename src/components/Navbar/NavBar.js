@@ -16,8 +16,23 @@ import IntelLogo from "../../assets/logoIntel/nav_intel.png";
 import CorsairLogo from "../../assets/logoCorsair/nav_corsair.png";
 import TrustLogo from "../../assets/logoTrust/nav_trust.png";
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { products } from "../../data/productos";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const [value, setValue] = useState("");
+  const navegarAProducto = useNavigate();
+
+  const onChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const onSearch = (wordToSearch) => {
+    setValue(wordToSearch);
+    console.log("search", wordToSearch);
+  };
+
   return (
     <>
       <div className="logosNavbar">
@@ -58,35 +73,65 @@ function NavBar() {
                 </Link>
               </Nav.Link>
               <Nav.Link as="div">
-                <Link to="/nosotros" className="navLinks">
-                  Nosotros
-                </Link>
-              </Nav.Link>
-              <Nav.Link as="div">
                 <Link to="/contacto" className="navLinks">
                   Contacto
                 </Link>
               </Nav.Link>
             </Nav>
             <Form className="d-flex" id="mainSearchNav">
-              <FormControl
-                type="search"
-                placeholder="¿Qué estas buscando?"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-search"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                </svg>
-              </Button>
+              <div className="productsFiltered">
+                <div className="test">
+                  <FormControl
+                    type="search"
+                    placeholder="¿Qué estas buscando?"
+                    className="me-2"
+                    aria-label="Search"
+                    value={value}
+                    onChange={onChange}
+                  />
+                  <Button
+                    variant="outline-primary"
+                    onClick={() => onSearch(value)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-search"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                  </Button>
+                </div>
+
+                <div className="dropdown">
+                  {products
+                    .filter((item) => {
+                      const searchTerm = value.toLowerCase();
+                      const productTitle = item.title.toLowerCase();
+                      return (
+                        searchTerm &&
+                        productTitle.includes(searchTerm) &&
+                        productTitle !== searchTerm
+                      );
+                    })
+                    .slice(0, 5)
+                    .map((product) => (
+                      <div
+                        onClick={() => {
+                          onSearch(product.title);
+                          navegarAProducto(`product/${product.id}`);
+                        }}
+                        className="dropdown-row"
+                        key={product.id}
+                      >
+                        {product.title}{" "}
+                      </div>
+                    ))}
+                </div>
+              </div>
             </Form>
             <CartWidget />
           </Navbar.Collapse>
