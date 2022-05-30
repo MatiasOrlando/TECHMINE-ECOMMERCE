@@ -12,7 +12,6 @@ const CustomProvider = ({ children }) => {
   const [redBorder, setRedBorder] = useState(false);
   const [maxStock, setMaxStock] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  console.log(searchTerm);
 
   const handleOnSubmit = (count) => {
     if (count === 1) {

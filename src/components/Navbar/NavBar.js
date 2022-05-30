@@ -30,7 +30,6 @@ function NavBar() {
 
   const onSearch = (wordToSearch) => {
     setValue(wordToSearch);
-    console.log("search", wordToSearch);
   };
 
   return (
@@ -105,8 +104,7 @@ function NavBar() {
                     </svg>
                   </Button>
                 </div>
-
-                <div className="dropdown">
+                <div className="dropdown1">
                   {products
                     .filter((item) => {
                       const searchTerm = value.toLowerCase();

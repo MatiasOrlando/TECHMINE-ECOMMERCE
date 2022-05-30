@@ -1,3 +1,19 @@
+import FormContacto from "../../components/FormContacto/FormContacto";
+import React, { useState } from "react";
+import SpinnerLoader from "../../components/LoadingSpinner/Spinner";
+import { NavLink } from "react-router-dom";
+
 export default function Contacto() {
-  return <div>Contacto</div>;
+  const [loading, setLoading] = useState(false);
+  return (
+    <>
+      <div className="linkToHome2">
+        <NavLink to="/tienda" className="linkToAllProducts">
+          Inicio /
+        </NavLink>{" "}
+        Contacto
+      </div>
+      {loading ? <SpinnerLoader /> : <FormContacto setLoading={setLoading} />}
+    </>
+  );
 }

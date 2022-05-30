@@ -312,6 +312,16 @@
   text-decoration: none;
 }
 
+.linkToHome2 {
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 50px;
+  padding: 20px 20px;
+  font-family: "Roboto";
+  color: gray;
+  margin-top: 40px;
+}
+
 .linkToHome {
   color: gray;
   text-decoration: none;
@@ -622,11 +632,13 @@
   -webkit-transition: all ease 0.2s;
 }
 
-.dropdown {
+.dropdown1 {
   background-color: white;
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
+  position: absolute;
+  margin-top: 42px;
 }
 
 .dropdown:empty {
@@ -648,13 +660,35 @@
   width: 300px;
   font-size: 12px;
   height: 25px;
+  font-family: "Roboto";
+  color: #0077f9;
 }
 
 .test {
   display: flex;
+  position: relative;
+  z-index: 1;
 }
 
 .productsFiltered {
   display: flex;
   flex-direction: column;
+}
+
+.formContact {
+  width: 800px;
+  margin-left: 70px;
+  background-color: white;
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px gray;
+  font-family: "Roboto";
+}
+
+.formTitle {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-left: 100px;
+  font-family: "roboto";
 }
