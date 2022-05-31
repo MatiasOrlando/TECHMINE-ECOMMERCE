@@ -8,7 +8,7 @@ export default function Contacto() {
   return (
     <>
       <div className="linkToHome2">
-        <NavLink to="/tienda" className="linkToAllProducts">
+        <NavLink to="/home" className="linkToAllProducts">
           Inicio /
         </NavLink>{" "}
         Contacto

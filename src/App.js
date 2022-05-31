@@ -8,6 +8,7 @@ import Cart from "./views/Cart/Cart";
 import Product from "./views/Product/Product";
 import Category from "./views/Category/Category";
 import CustomProvider from "./components/CustomProvider/CustomProvider";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/contacto" element={<Contacto />} />
           <Route exact path="/cart" element={<Cart />} />
         </Routes>
+        <Footer />
       </CustomProvider>
     </BrowserRouter>
   );

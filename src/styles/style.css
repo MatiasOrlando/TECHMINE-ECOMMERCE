@@ -585,7 +585,6 @@
 }
 
 .carritoBack {
-  height: 1000vh;
   background-color: #ebebeb;
 }
 
@@ -691,4 +690,20 @@
   margin-bottom: 20px;
   padding-left: 100px;
   font-family: "roboto";
+}
+
+.bold {
+  font-weight: bold;
+  font-family: "Roboto";
+}
+
+.divFooter {
+  background-color: black;
+  color: white;
+  margin-top: 60px;
+}
+
+.linksFooter {
+  color: white;
+  text-decoration: none;
 }

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Form, Row, Button } from "react-bootstrap";
 import swal from "sweetalert";
+import { BsFillEnvelopeFill } from "react-icons/bs";
+import { GiHouse } from "react-icons/gi";
+
 const FormContacto = ({ setLoading }) => {
   let consultaUsuario = [];
-  const fakeProm = true;
+  const fakeRequest = true;
   const [validated, setValidated] = useState(false);
   const [formValues, setFormValues] = useState({
     nombre: "",
@@ -34,16 +37,16 @@ const FormContacto = ({ setLoading }) => {
         "Informacion consulta usuario",
         JSON.stringify(consultaUsuario)
       );
-      if (fakeProm) {
+      if (fakeRequest) {
         setTimeout(() => {
           setLoading(false);
           swal({
-            title: "Mensaje enviado",
+            title: `Mensaje enviado ${formValues.nombre}`,
             text: "Nos pondremos en contacto a la brevedad",
             icon: "success",
             button: "aceptar",
           });
-        }, 2000);
+        }, 1000);
       }
     }
   };
@@ -139,10 +142,10 @@ const FormContacto = ({ setLoading }) => {
                   style={{ width: "700px", marginLeft: "10px" }}
                 />
                 <Form.Control.Feedback type="invalid">
-                  Porfavor ingrese una ciudad válida
+                  Ingrese una ciudad válida
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Label>Envianos tu consulta</Form.Label>
+              <Form.Label>Envíanos tu consulta</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Mensaje..."
@@ -169,7 +172,31 @@ const FormContacto = ({ setLoading }) => {
           </Form>
         </div>
         <div style={{ backgroundColor: "white", width: "650px" }}>
-          <img style={{ width: "600px" }} src="/images/placaminera.jpg" />
+          <img
+            style={{ width: "600px" }}
+            src="/images/placaminera.jpg"
+            alt="H110 PRO ASROCK "
+          />
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
+            <div>
+              <span class="bold">
+                <GiHouse style={{ marginBottom: "7px" }} />
+                <span style={{ paddingLeft: "5px" }}>Dirección</span>
+              </span>
+              <p>
+                <span>Paseo Colón 702 Local 170</span>
+              </p>
+            </div>
+            <div>
+              <span class="bold">
+                <BsFillEnvelopeFill style={{ marginBottom: "2px" }} />
+                <span style={{ paddingLeft: "5px" }}>Atención al cliente</span>
+              </span>
+              <p style={{ paddingTop: "1px" }}>
+                <span>ventas@techmine.com.ar</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </>
