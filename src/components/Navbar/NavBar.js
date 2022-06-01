@@ -6,6 +6,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 
 import CartWidget from "../Cartwidget/CartWidget";
 import LogoMarca from "../../assets/logo/logo.jpg";
@@ -16,13 +17,15 @@ import IntelLogo from "../../assets/logoIntel/nav_intel.png";
 import CorsairLogo from "../../assets/logoCorsair/nav_corsair.png";
 import TrustLogo from "../../assets/logoTrust/nav_trust.png";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { products } from "../../data/productos";
 import { useNavigate } from "react-router-dom";
+import { contexto } from "../CustomProvider/CustomProvider";
 
 function NavBar() {
   const [value, setValue] = useState("");
   const navegarAProducto = useNavigate();
+  const { addedToCart } = useContext(contexto);
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -144,6 +147,16 @@ function NavBar() {
         <li>AMD</li>
         <li>ASUS</li>
       </div>
+      {addedToCart && (
+        <div className="addedToCart">
+          <p style={{ paddingTop: "10px" }}>
+            <BsFillCheckCircleFill
+              style={{ marginRight: "10px", minHeight: "40px" }}
+            />
+            Producto agregado al carrito
+          </p>
+        </div>
+      )}
     </>
   );
 }

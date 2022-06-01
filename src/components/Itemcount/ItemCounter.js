@@ -30,20 +30,36 @@ export default function ItemCount({
               type="button"
               onClick={handleDecrementItem}
               disabled={!buttonDecreaseActive}
-              className="btn btn-secondary"
+              className="buttonDecrease"
+              style={{ fontSize: "40px" }}
             >
               -
             </button>
 
             <div className="valueItem">
-              <p className="counterP">{count}</p>
+              <p
+                style={{
+                  color: "black",
+                  border: "1px solid #eaeaea",
+                  width: "100px",
+                  height: "60px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: "20px",
+                  fontSize: "20px",
+                }}
+              >
+                {count}
+              </p>
             </div>
 
             <button
               type="button"
               onClick={handleAddItem}
               disabled={buttonAddActive}
-              className="btn btn-secondary"
+              className="buttonDecrease"
+              style={{ fontSize: "35px" }}
             >
               +
             </button>

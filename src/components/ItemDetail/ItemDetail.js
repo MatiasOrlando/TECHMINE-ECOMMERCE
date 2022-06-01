@@ -25,6 +25,7 @@ const ItemDetail = ({ detailProduct }) => {
     redBorder,
     maxStock,
     setMaxStock,
+    setAddedToCart,
   } = useContext(contexto);
 
   const handleAddItem = (count) => {
@@ -173,7 +174,15 @@ const ItemDetail = ({ detailProduct }) => {
               </button>
             </div>
           ) : (
-            <AddButton onSubmit={() => addToCart(detailProduct, count)} />
+            <AddButton
+              onSubmit={() => {
+                addToCart(detailProduct, count);
+                setAddedToCart(true);
+                setTimeout(() => {
+                  setAddedToCart(false);
+                }, 3000);
+              }}
+            />
           )}
         </div>
       </div>

@@ -214,12 +214,8 @@
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
-}
-
-.counterP {
-  width: 30px;
-  display: flex;
-  justify-content: center;
+  padding: 1%;
+  width: 150px;
 }
 
 .valueItem {
@@ -408,19 +404,15 @@
   justify-content: center;
 }
 
-.itemCounter {
-  padding: 1%;
-  width: 150px;
-  justify-content: center;
-}
-
 .itemCounter2 {
+  margin-top: 30px;
   padding: 5%;
-  width: 150px;
-  border: 4px solid black;
+  width: 250px;
+  border: 3px solid black;
   border-radius: 10px;
   justify-content: center;
   margin-bottom: 5px;
+  height: 110px;
 }
 
 .card1 {
@@ -586,6 +578,7 @@
 
 .carritoBack {
   background-color: #ebebeb;
+  margin-bottom: 100px;
 }
 
 .cart .item.end .cta button {
@@ -626,9 +619,6 @@
   font-size: 16px;
   outline: 0;
   padding: 10px;
-  transition: all ease 0.2s;
-  -moz-transition: all ease 0.2s;
-  -webkit-transition: all ease 0.2s;
 }
 
 .dropdown1 {
@@ -706,4 +696,29 @@
 .linksFooter {
   color: white;
   text-decoration: none;
+}
+
+.emptyCartView {
+  border: 1px solid #eaeaea;
+  display: flex;
+  background-color: #fff;
+  width: 70%;
+  padding: 40px 0;
+}
+
+.textEmptyCart {
+  padding-left: 40px;
+  font-family: "roboto";
+  font-size: 18px;
+}
+
+.addedToCart {
+  background-color: #5fff6e;
+  color: #089900;
+  height: 50px;
+  font-family: "Roboto";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }

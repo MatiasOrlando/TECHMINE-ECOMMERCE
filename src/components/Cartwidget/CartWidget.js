@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { contexto } from "../CustomProvider/CustomProvider";
 
 export default function CartWidget() {
-  const { cart } = useContext(contexto);
+  const { cart, addQty } = useContext(contexto);
 
   return (
     <>
@@ -13,7 +13,7 @@ export default function CartWidget() {
           alt="Carrito"
           style={{ height: "32px", width: "32px" }}
         />
-        <div className="number">{cart.length}</div>
+        {cart.length !== 0 && <div className="number">{addQty(cart)}</div>}
       </NavLink>
     </>
   );

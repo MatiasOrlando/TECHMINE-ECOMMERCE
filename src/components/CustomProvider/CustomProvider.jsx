@@ -11,7 +11,7 @@ const CustomProvider = ({ children }) => {
   const [activeAddToCartButton, setActiveAddToCartButton] = useState(0);
   const [redBorder, setRedBorder] = useState(false);
   const [maxStock, setMaxStock] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const handleOnSubmit = (count) => {
     if (count === 1) {
@@ -76,6 +76,20 @@ const CustomProvider = ({ children }) => {
     }
   };
 
+  const totalSum = (cart) => {
+    const totalPriceItems = cart
+      .map((productCart) => productCart.price * productCart.quantity)
+      .reduce((acc, el) => acc + el, 0);
+    return totalPriceItems;
+  };
+
+  const addQty = (cart) => {
+    const qtyItems = cart.reduce((acc, product) => {
+      return acc + product.quantity;
+    }, 0);
+    return qtyItems;
+  };
+
   const reduceQty = (product, quantity) => {
     if (isInCart(product.id)) {
       const newCart = cart.map((newPurchase) => {
@@ -121,8 +135,10 @@ const CustomProvider = ({ children }) => {
     setRedBorder: setRedBorder,
     maxStock: maxStock,
     setMaxStock: setMaxStock,
-    setSearchTerm: setSearchTerm,
-    searchTerm: searchTerm,
+    addQty: addQty,
+    totalSum: totalSum,
+    addedToCart: addedToCart,
+    setAddedToCart: setAddedToCart,
   };
 
   return <Provider value={valueContext}>{children}</Provider>;

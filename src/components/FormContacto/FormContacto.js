@@ -62,7 +62,7 @@ const FormContacto = ({ setLoading }) => {
 
   return (
     <>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", marginBottom: "100px" }}>
         <div>
           <Form
             noValidate
