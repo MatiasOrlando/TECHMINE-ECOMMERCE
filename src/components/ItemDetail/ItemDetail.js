@@ -14,6 +14,7 @@ const ItemDetail = ({ detailProduct }) => {
   const navegarATienda = useNavigate();
   const navegarACart = useNavigate();
   const [count, setCount] = useState(1);
+  const [fakeCondition, setFakeCondition] = React.useState(false);
 
   const {
     addToCart,
@@ -162,6 +163,7 @@ const ItemDetail = ({ detailProduct }) => {
             buttonDecreaseActive={buttonDecreaseActive}
             maxStock={maxStock}
             redBorder={redBorder}
+            fakeCondition={fakeCondition}
           />
           {activeAddToCartButton >= 1 ? (
             <div className="btnEndPurchase">
@@ -178,6 +180,7 @@ const ItemDetail = ({ detailProduct }) => {
               onSubmit={() => {
                 addToCart(detailProduct, count);
                 setAddedToCart(true);
+                setFakeCondition(true);
                 setTimeout(() => {
                   setAddedToCart(false);
                 }, 3000);

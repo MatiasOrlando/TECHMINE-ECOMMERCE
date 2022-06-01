@@ -8,6 +8,7 @@ export default function ItemCount({
   buttonDecreaseActive,
   maxStock,
   redBorder,
+  fakeCondition,
 }) {
   return (
     <div
@@ -31,7 +32,7 @@ export default function ItemCount({
               onClick={handleDecrementItem}
               disabled={!buttonDecreaseActive}
               className="buttonDecrease"
-              style={{ fontSize: "40px" }}
+              style={{ fontSize: "45px", marginTop: fakeCondition && "-15px" }}
             >
               -
             </button>
@@ -59,7 +60,7 @@ export default function ItemCount({
               onClick={handleAddItem}
               disabled={buttonAddActive}
               className="buttonDecrease"
-              style={{ fontSize: "35px" }}
+              style={{ fontSize: "40px", marginTop: fakeCondition && "-10px" }}
             >
               +
             </button>
