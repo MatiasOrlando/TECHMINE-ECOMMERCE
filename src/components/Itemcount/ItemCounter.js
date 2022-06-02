@@ -32,7 +32,7 @@ export default function ItemCount({
               onClick={handleDecrementItem}
               disabled={!buttonDecreaseActive}
               className="buttonDecrease"
-              style={{ fontSize: "45px", marginTop: fakeCondition && "-15px" }}
+              style={{ fontSize: "45px", marginTop: fakeCondition && "-18px" }}
             >
               -
             </button>
@@ -60,7 +60,7 @@ export default function ItemCount({
               onClick={handleAddItem}
               disabled={buttonAddActive}
               className="buttonDecrease"
-              style={{ fontSize: "40px", marginTop: fakeCondition && "-10px" }}
+              style={{ fontSize: "37px", marginTop: fakeCondition && "-11px" }}
             >
               +
             </button>

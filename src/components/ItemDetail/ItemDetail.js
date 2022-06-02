@@ -181,6 +181,7 @@ const ItemDetail = ({ detailProduct }) => {
                 addToCart(detailProduct, count);
                 setAddedToCart(true);
                 setFakeCondition(true);
+                window.scrollTo({ top: 0, behavior: "smooth" });
                 setTimeout(() => {
                   setAddedToCart(false);
                 }, 3000);
