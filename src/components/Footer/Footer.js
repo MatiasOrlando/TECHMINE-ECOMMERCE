@@ -38,12 +38,12 @@ const Footer = () => {
                   métodos de pago.
                 </p>
                 <img
-                  alt="logoVisa"
+                  alt="logoTarjetas"
                   src="/images/tarjetaVisa.png"
                   style={{ height: "45px" }}
                 />
                 <img
-                  alt="logoVisa"
+                  alt="logoMercadoPago"
                   src="/images/mercadopago2.png"
                   style={{ height: "50px" }}
                 />

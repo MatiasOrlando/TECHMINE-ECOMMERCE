@@ -12,7 +12,11 @@ export default function Item({ product }) {
             <div className="item product-list">
               <div className="padre">
                 <div className="imageProductDiv">
-                  <img src={product.image} alt="" className="imgProduct" />
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="imgProduct"
+                  />
                 </div>
                 <div>
                   <div className="info">

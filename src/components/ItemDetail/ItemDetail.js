@@ -144,7 +144,7 @@ const ItemDetail = ({ detailProduct }) => {
           <div className="price-mp">
             <img
               src="/images/mercadopago.png"
-              alt="mercadopago"
+              alt="Mercado pago"
               style={{ height: "30px", width: "100px" }}
             />
           </div>

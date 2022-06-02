@@ -4,7 +4,7 @@ TECHMINE, es una aplicacion web e-commerce que le permite a sus usuarios poder a
 
 ## Demo
 
-<img width= "690px"  height="388px" src=./public/images/gif.gif>
+<img width= "690px"  height="388px" alt="Gif app web" src=./public/images/gif.gif>
 
 <br>
 <br>
@@ -27,6 +27,7 @@ Este proyecto fue realizado con las siguientes tecnologías y librerías:
 <li>Toastify - Librería Pop-ups interactivos</li>
 <li>React Icons - Librería de Iconos</li>
 <li>React Router Dom - Librería de componentes de navegación React</li>
+<li>Sweet Alert - Libreria mensajes interactivos
 </ul>
 
 <br>

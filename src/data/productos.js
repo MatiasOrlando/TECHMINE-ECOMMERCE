@@ -27,11 +27,11 @@ export const products = [
   },
   {
     id: 3,
-    title: "MICRO INTEL CELERON G5905 NT DC 3.5GHZ ",
+    title: "INTEL PENTIUM GOLD G5400 NT DC 3.5GHZ ",
     stock: 4,
     price: 7238,
     oldprice: 12900,
-    image: "/images/intelg5905.jpg",
+    image: "/images/intelg5400.jpg",
     imageb: "/images/intelg5905b.jpg",
     imagec: "/images/intelg5905c.jpg",
     description:

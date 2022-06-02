@@ -9,15 +9,15 @@ export default function Home() {
       <div className="homeImgParent">
         <div className="homeImg">
           <div className="imgBlockChain">
-            <img src="/images/blockChain.jpg" />
+            <img src="/images/blockChain.jpg" alt="Geforce RTX FTW3" />
           </div>
         </div>
         <div className="homeImg">
           <div>
-            <img src="/images/amdIntel1.jpg" />
+            <img src="/images/amdIntel1.jpg" alt="Arma tu pc gamer" />
           </div>
           <div>
-            <img src="/images/amdIntel2.jpg" />
+            <img src="/images/amdIntel2.jpg" alt="Arma tu pc" />
           </div>
         </div>
       </div>
@@ -25,35 +25,29 @@ export default function Home() {
         <div className="item" style={{ width: "320px" }}>
           <div className="card1">
             <div className="logo1">
-              <img src="/images/logoHomeGforce.png" alt="AMD" />
+              <img src="/images/logoHomeGforce.png" alt="Logo Geforce" />
             </div>
             <div className="products">
               <div className="item">
-                <a href="#">
-                  <img
-                    src="/images/gt1030.jpg"
-                    alt="micro-amd-ryzen-5-5600g"
-                    style={{ width: "90px", height: "90px" }}
-                  />
-                </a>
+                <img
+                  src="/images/gt1030.jpg"
+                  alt="Geforce gt 1030"
+                  style={{ width: "90px", height: "90px" }}
+                />
               </div>
               <div className="item">
-                <a href="#">
-                  <img
-                    src="/images/gtrtx3090.jpg"
-                    alt="video-radeon-rx-6600-msi-armor-2x"
-                    style={{ width: "90px", height: "90px" }}
-                  />
-                </a>
+                <img
+                  src="/images/gtrtx3090.jpg"
+                  alt="Geforce gt rtx 3090"
+                  style={{ width: "90px", height: "90px" }}
+                />
               </div>
               <div className="item">
-                <a href="#">
-                  <img
-                    src="/images/gtx1650.jpg"
-                    alt="Gforce gtx1650"
-                    style={{ width: "90px", height: "90px" }}
-                  />
-                </a>
+                <img
+                  src="/images/gtx1650.jpg"
+                  alt="Gforce gtx1650"
+                  style={{ width: "90px", height: "90px" }}
+                />
               </div>
             </div>
             <div style={{ marginTop: "40px" }}>
@@ -70,13 +64,11 @@ export default function Home() {
             </div>
             <div className="products">
               <div className="item">
-                <a href="#">
-                  <img
-                    src="/images/intelg5400.jpg"
-                    alt="intel g5400"
-                    style={{ width: "90px", height: "90px" }}
-                  />
-                </a>
+                <img
+                  src="/images/intelg5400.jpg"
+                  alt="intel g5400"
+                  style={{ width: "90px", height: "90px" }}
+                />
               </div>
               <div className="item">
                 <span>
@@ -88,13 +80,11 @@ export default function Home() {
                 </span>
               </div>
               <div className="item">
-                <a href="#">
-                  <img
-                    src="/images/intel9600.jpg"
-                    alt="intel9600"
-                    style={{ width: "90px", height: "90px" }}
-                  />
-                </a>
+                <img
+                  src="/images/intel9600.jpg"
+                  alt="intel i9600"
+                  style={{ width: "90px", height: "90px" }}
+                />
               </div>
             </div>
             <div style={{ marginTop: "40px" }}>
@@ -114,28 +104,24 @@ export default function Home() {
                 <span>
                   <img
                     src="/images/ssd30.jpg"
-                    alt="ssd 30"
+                    alt="HD SSD 30"
                     style={{ width: "90px", height: "90px" }}
                   />
                 </span>
               </div>
               <div className="item">
-                <a href="#">
-                  <img
-                    src="/images/ssdSata3.jpg"
-                    alt="ssd Sata 3"
-                    style={{ width: "90px", height: "90px" }}
-                  />
-                </a>
+                <img
+                  src="/images/ssdSata3.jpg"
+                  alt=" HD SSD Sata 3"
+                  style={{ width: "90px", height: "90px" }}
+                />
               </div>
               <div className="item">
-                <a href="#">
-                  <img
-                    src="/images/ssd35.jpg"
-                    alt="ssd 35"
-                    style={{ width: "90px", height: "90px" }}
-                  />
-                </a>
+                <img
+                  src="/images/ssd35.jpg"
+                  alt="HD SSD 35"
+                  style={{ width: "90px", height: "90px" }}
+                />
               </div>
             </div>
             <div style={{ marginTop: "40px" }}>
