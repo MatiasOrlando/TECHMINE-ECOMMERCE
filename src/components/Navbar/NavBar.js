@@ -28,6 +28,8 @@ function NavBar() {
   const { addedToCart } = useContext(contexto);
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
+  const [startSearch, setStartSearch] = useState(false);
+  const [noMatches, setNoMatches] = useState(false);
 
   useEffect(() => {
     const db = getFirestore();
@@ -44,14 +46,24 @@ function NavBar() {
   }, [value]);
 
   const handleSearch = (event) => {
+    console.log(value);
     event.preventDefault();
-    value !== ""
-      ? setSearchTerm(
-          products.filter((product) => {
-            return product.title.toLowerCase().includes(value.toLowerCase());
-          })
-        )
-      : setSearchTerm("");
+    if (value !== "") {
+      setSearchTerm(
+        products.filter((product) => {
+          return product.title.toLowerCase().includes(value.toLowerCase());
+        })
+      );
+      setStartSearch(true);
+      if (searchTerm.length === 0) {
+        setNoMatches(true);
+      } else if (searchTerm.length > 0) {
+        setNoMatches(false);
+      }
+      console.log(searchTerm);
+    } else {
+      setStartSearch(false);
+    }
   };
 
   return (
@@ -107,7 +119,13 @@ function NavBar() {
                     placeholder="¿Qué estas buscando?"
                     className="me-2"
                     aria-label="Search"
-                    onChange={(e) => setValue(e.target.value)}
+                    onChange={(e) => {
+                      setValue(e.target.value);
+                      if (e.target.value === "") {
+                        setStartSearch(false);
+                        setNoMatches(false);
+                      }
+                    }}
                   />
                   <Button variant="outline-primary" type="submit">
                     <svg
@@ -123,18 +141,24 @@ function NavBar() {
                   </Button>
                 </div>
                 <div className="dropdown1">
-                  {value !== "" &&
-                    searchTerm.slice(0, 5).map((product) => (
-                      <div
-                        onClick={() => {
-                          navegarAProducto(`product/${product.id}`);
-                        }}
-                        className="dropdown-row"
-                        key={product.id}
-                      >
-                        {product.title}{" "}
-                      </div>
-                    ))}
+                  {startSearch && value !== ""
+                    ? searchTerm.slice(0, 5).map((product) => (
+                        <div
+                          onClick={() => {
+                            navegarAProducto(`product/${product.id}`);
+                          }}
+                          className="dropdown-row"
+                          key={product.id}
+                        >
+                          {product.title}{" "}
+                        </div>
+                      ))
+                    : ""}
+                  {noMatches === true && (
+                    <div className="dropdown-row">
+                      NO SE HAN ENCONTRADO RESULTADOS
+                    </div>
+                  )}
                 </div>
               </div>
             </Form>
