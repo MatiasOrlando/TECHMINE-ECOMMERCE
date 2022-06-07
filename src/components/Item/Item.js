@@ -9,7 +9,7 @@ export default function Item({ product }) {
       <Nav.Link as="div">
         <NavLink to={`/product/${product.id}`} className="linkToProductDetail">
           <div>
-            <div className="item product-list">
+            <div className="itemList">
               <div className="padre">
                 <div className="imageProductDiv">
                   <img

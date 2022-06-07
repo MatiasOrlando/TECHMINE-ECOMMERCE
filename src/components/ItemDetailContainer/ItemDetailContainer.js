@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { dataBase } from "../../data/productos";
 import { NavLink } from "react-router-dom";
 import SpinnerLoader from "../LoadingSpinner/Spinner";
 import { contexto } from "../CustomProvider/CustomProvider";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = ({ titleDetalleProducto, id }) => {
   const { setActiveAddToCartButton, setRedBorder } = useContext(contexto);
@@ -12,16 +12,13 @@ const ItemDetailContainer = ({ titleDetalleProducto, id }) => {
 
   useEffect(() => {
     setLoading(true);
-    dataBase
-      .then((res) => res.find((item) => item.id === +id))
-      .then((res) => setDetailProduct(res))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-  }, [id]);
-
-  useEffect(() => {
     setActiveAddToCartButton(0);
     setRedBorder(false);
+    const db = getFirestore();
+    const productRef = doc(db, "productos", id);
+    getDoc(productRef)
+      .then((doc) => setDetailProduct({ id: doc.id, ...doc.data() }))
+      .finally(() => setLoading(false));
   }, [id]);
 
   const { title, categoryId } = detailProduct;
@@ -34,6 +31,7 @@ const ItemDetailContainer = ({ titleDetalleProducto, id }) => {
           <NavLink
             className="linkProductsCategorys"
             to={`/category/${categoryId}`}
+            style={{ paddingLeft: "2px", paddingRight: "2px" }}
           >
             {categoryId}
           </NavLink>

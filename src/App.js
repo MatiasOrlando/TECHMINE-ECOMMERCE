@@ -9,6 +9,9 @@ import Product from "./views/Product/Product";
 import Category from "./views/Category/Category";
 import CustomProvider from "./components/CustomProvider/CustomProvider";
 import Footer from "./components/Footer/Footer";
+import MenorPrecio from "./views/MenorPrecio/MenorPrecio";
+import MayorPrecio from "./views/MayorPrecio/MayorPrecio";
+import Error from "./views/Error/Error";
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
           <Route exact path="/category/:categoryId" element={<Category />} />
           <Route exact path="/contacto" element={<Contacto />} />
           <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/minor" element={<MenorPrecio />} />
+          <Route exact path="/mayor" element={<MayorPrecio />} />
+          <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
       </CustomProvider>

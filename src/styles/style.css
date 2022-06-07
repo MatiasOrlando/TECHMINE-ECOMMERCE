@@ -91,7 +91,7 @@
 .padre {
   display: flex;
   flex-direction: row;
-  margin-left: 400px;
+  margin-left: 200px;
   border: solid 1px rgb(230, 222, 222);
   background-color: white;
   width: 1000px;
@@ -283,7 +283,9 @@
   color: gray;
   text-decoration: none;
 }
-
+.tiendaProductos {
+  margin-bottom: 60px;
+}
 .tienda {
   text-decoration: none;
   font-size: 20px;
@@ -293,6 +295,26 @@
   color: gray;
   margin-top: 40px;
 }
+
+.tienda3 {
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 197px;
+  padding: 20px 20px;
+  font-family: "Roboto";
+  color: gray;
+}
+
+.tienda4 {
+  margin-top: 40px;
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 138px;
+  padding: 20px 20px;
+  font-family: "Roboto";
+  color: gray;
+}
+
 .carrito {
   text-decoration: none;
   font-size: 20px;
@@ -427,7 +449,7 @@
   transition: all ease 0.2s;
   -moz-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
-  background-image: url("C:\Users\User\Desktop\React JS\Mi primer proyecto\minetech\public\images\backImgGforce.png");
+  background-image: url("https://i.postimg.cc/JzqSbnXW/back-Img-Gforce.jpg");
 }
 
 .card2 {
@@ -442,7 +464,7 @@
   transition: all ease 0.2s;
   -moz-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
-  background-image: url("C:\Users\User\Desktop\React JS\Mi primer proyecto\minetech\public\images\backImgCore.png");
+  background-image: url("https://i.postimg.cc/rFGHkmQt/back-Img-Core.jpg");
 }
 .card3 {
   background-color: #fff;
@@ -456,7 +478,7 @@
   transition: all ease 0.2s;
   -moz-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
-  background-image: url("C:\Users\User\Desktop\React JS\Mi primer proyecto\minetech\public\images\backImgSsd.png");
+  background-image: url("https://i.postimg.cc/bJ26FNZr/back-Img-Ssd.jpg");
 }
 
 .logo1,
@@ -690,7 +712,6 @@
 .divFooter {
   background-color: black;
   color: white;
-  margin-top: 60px;
 }
 
 .linksFooter {
@@ -721,4 +742,54 @@
   justify-content: center;
   align-items: center;
   font-size: 18px;
+}
+
+.titleOrderProducts {
+  font-family: "Roboto";
+  font-size: 18px;
+  padding-left: 20px;
+  color: gray;
+}
+
+.orderPerPrice {
+  width: 250px;
+  padding-left: 100px;
+  padding-top: 70px;
+}
+
+.divFiltroPrecios {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90px;
+  width: 160px;
+  margin-left: 20px;
+}
+
+#btnPriceFilter {
+  color: #0077f9;
+  border: 2px solid #0077f9;
+  height: 40px;
+}
+
+#btnPriceFilter:hover {
+  background-color: #0077f9;
+  border: 2px solid #0077f9;
+  color: #fff;
+  transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+}
+
+.hotsale {
+  margin-top: 50px;
+  margin-left: 20px;
+  width: 200px;
+}
+
+.titleProductsHotSale {
+  font-family: "Roboto";
+  font-size: 18px;
+  color: gray;
+  padding-bottom: 10px;
 }

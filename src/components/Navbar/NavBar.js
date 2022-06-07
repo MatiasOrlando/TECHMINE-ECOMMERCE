@@ -17,22 +17,41 @@ import IntelLogo from "../../assets/logoIntel/nav_intel.png";
 import CorsairLogo from "../../assets/logoCorsair/nav_corsair.png";
 import TrustLogo from "../../assets/logoTrust/nav_trust.png";
 import { Link } from "react-router-dom";
-import React, { useContext, useState } from "react";
-import { products } from "../../data/productos";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { contexto } from "../CustomProvider/CustomProvider";
+import { getFirestore, getDocs, collection } from "firebase/firestore";
 
 function NavBar() {
   const [value, setValue] = useState("");
   const navegarAProducto = useNavigate();
   const { addedToCart } = useContext(contexto);
+  const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState([]);
 
-  const onChange = (event) => {
-    setValue(event.target.value);
-  };
+  useEffect(() => {
+    const db = getFirestore();
+    const itemsRef = collection(db, "productos");
+    getDocs(itemsRef)
+      .then((snapshots) => {
+        setProducts(
+          snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [value]);
 
-  const onSearch = (wordToSearch) => {
-    setValue(wordToSearch);
+  const handleSearch = (event) => {
+    event.preventDefault();
+    value !== ""
+      ? setSearchTerm(
+          products.filter((product) => {
+            return product.title.toLowerCase().includes(value.toLowerCase());
+          })
+        )
+      : setSearchTerm("");
   };
 
   return (
@@ -80,7 +99,7 @@ function NavBar() {
                 </Link>
               </Nav.Link>
             </Nav>
-            <Form className="d-flex" id="mainSearchNav">
+            <Form className="d-flex" id="mainSearchNav" onSubmit={handleSearch}>
               <div className="productsFiltered">
                 <div className="test">
                   <FormControl
@@ -88,13 +107,9 @@ function NavBar() {
                     placeholder="¿Qué estas buscando?"
                     className="me-2"
                     aria-label="Search"
-                    value={value}
-                    onChange={onChange}
+                    onChange={(e) => setValue(e.target.value)}
                   />
-                  <Button
-                    variant="outline-primary"
-                    onClick={() => onSearch(value)}
-                  >
+                  <Button variant="outline-primary" type="submit">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -108,21 +123,10 @@ function NavBar() {
                   </Button>
                 </div>
                 <div className="dropdown1">
-                  {products
-                    .filter((item) => {
-                      const searchTerm = value.toLowerCase();
-                      const productTitle = item.title.toLowerCase();
-                      return (
-                        searchTerm &&
-                        productTitle.includes(searchTerm) &&
-                        productTitle !== searchTerm
-                      );
-                    })
-                    .slice(0, 5)
-                    .map((product) => (
+                  {value !== "" &&
+                    searchTerm.slice(0, 5).map((product) => (
                       <div
                         onClick={() => {
-                          onSearch(product.title);
                           navegarAProducto(`product/${product.id}`);
                         }}
                         className="dropdown-row"

@@ -18,15 +18,19 @@ const Category = () => {
           Discos SSD
         </NavLink>
       </div>
-      <ItemsListContainer
-        categoryId={categoryId}
-        title={
-          <NavLink to="/tienda" className="linkToAllProducts">
-            Nuestros productos
-          </NavLink>
-        }
-        title2={`${categoryId}`}
-      />
+      <div
+        style={{ marginLeft: "100px", marginTop: "40px", marginBottom: "70px" }}
+      >
+        <ItemsListContainer
+          categoryId={categoryId}
+          title={
+            <NavLink to="/tienda" className="linkToAllProducts">
+              Nuestros productos
+            </NavLink>
+          }
+          title2={`${categoryId}`}
+        />
+      </div>
     </>
   );
 };

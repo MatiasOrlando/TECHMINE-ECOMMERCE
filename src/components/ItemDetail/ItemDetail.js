@@ -184,7 +184,7 @@ const ItemDetail = ({ detailProduct }) => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
                 setTimeout(() => {
                   setAddedToCart(false);
-                }, 3000);
+                }, 1300);
               }}
             />
           )}
