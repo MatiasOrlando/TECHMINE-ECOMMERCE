@@ -27,7 +27,8 @@ Este proyecto fue realizado con las siguientes tecnologías y librerías:
 <li>Toastify - Librería Pop-ups interactivos</li>
 <li>React Icons - Librería de Iconos</li>
 <li>React Router Dom - Librería de componentes de navegación React</li>
-<li>Sweet Alert - Libreria mensajes interactivos
+<li>Sweet Alert - Libreria mensajes interactivos</li>
+<li>Swiper - Libreria touch slider</li>
 </ul>
 
 <br>

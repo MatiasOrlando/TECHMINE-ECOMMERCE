@@ -27,7 +27,7 @@ const SwiperTest = () => {
         <img
           src="/images/logomsi.jpg"
           alt="logoMSI"
-          style={{ height: "120px", width: "120px" }}
+          style={{ height: "120px", width: "120px", marginLeft: "40px" }}
         />
       </SwiperSlide>
       <SwiperSlide>
@@ -35,49 +35,49 @@ const SwiperTest = () => {
         <img
           src="/images/logoadrus.jpg"
           alt="logoAdrus"
-          style={{ height: "120px", width: "120px" }}
+          style={{ height: "120px", width: "120px", marginLeft: "50px" }}
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           src="/images/logofruy.jpg"
           alt="logoAdrus"
-          style={{ height: "120px", width: "120px" }}
+          style={{ height: "120px", width: "120px", marginLeft: "50px" }}
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           src="/images/logotrust.jpg"
           alt="logoTrust"
-          style={{ height: "120px", width: "120px" }}
+          style={{ height: "120px", width: "120px", marginLeft: "50px" }}
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           src="/images/swipercorsair.jpg"
           alt="logoCorsair"
-          style={{ height: "120px", width: "120px" }}
+          style={{ height: "120px", width: "120px", marginLeft: "50px" }}
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           src="/images/swiperlogitech.jpg"
           alt="logoLogitech"
-          style={{ height: "120px", width: "120px" }}
+          style={{ height: "120px", width: "120px", marginLeft: "50px" }}
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           src="/images/swiperrazer.jpg"
           alt="logoCorsair"
-          style={{ height: "120px", width: "120px" }}
+          style={{ height: "120px", width: "120px", marginLeft: "50px" }}
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           src="/images/swipersaphire.jpg"
           alt="logoCorsair"
-          style={{ height: "120px", width: "120px" }}
+          style={{ height: "120px", width: "120px", marginLeft: "50px" }}
         />
       </SwiperSlide>
     </Swiper>
