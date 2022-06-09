@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 import { BsCart3 } from "react-icons/bs";
 import { ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react";
-import { contexto } from "../CustomProvider/CustomProvider";
+import { contexto } from "../../CustomProvider/CustomProvider";
 
 const ItemDetail = ({ detailProduct }) => {
   const { image, imageb, imagec, title, price, oldprice, stock, description } =

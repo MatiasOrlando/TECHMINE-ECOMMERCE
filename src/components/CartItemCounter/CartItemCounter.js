@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { contexto } from "../CustomProvider/CustomProvider";
+import { contexto } from "../../CustomProvider/CustomProvider";
 
 const CartItemCounter = ({ purchase }) => {
   const [buttonActive, setButtonActive] = useState(true);

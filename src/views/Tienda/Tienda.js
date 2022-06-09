@@ -1,7 +1,7 @@
-// import ItemDetailContainer from "../../components/ItemDetailContainer/ItemDetailContainer";
 import ItemsListContainer from "../../components/ItemsListContainer/ProductsContainer";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import SwiperTest from "../../components/SwiperTest/SwiperTest";
 
 export default function Tienda() {
   const navegarAPreciosOrdenadosAsc = useNavigate();
@@ -98,6 +98,7 @@ export default function Tienda() {
           />
         </div>
       </div>
+      <SwiperTest />
     </div>
   );
 }

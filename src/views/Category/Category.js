@@ -2,6 +2,7 @@ import React from "react";
 import ItemsListContainer from "../../components/ItemsListContainer/ProductsContainer";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import SwiperTest from "../../components/SwiperTest/SwiperTest";
 
 const Category = () => {
   const { categoryId } = useParams();
@@ -31,6 +32,7 @@ const Category = () => {
           title2={`${categoryId}`}
         />
       </div>
+      <SwiperTest />
     </>
   );
 };

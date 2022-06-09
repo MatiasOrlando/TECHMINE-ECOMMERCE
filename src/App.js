@@ -7,11 +7,12 @@ import Tienda from "./views/Tienda/Tienda";
 import Cart from "./views/Cart/Cart";
 import Product from "./views/Product/Product";
 import Category from "./views/Category/Category";
-import CustomProvider from "./components/CustomProvider/CustomProvider";
+import CustomProvider from "./CustomProvider/CustomProvider";
 import Footer from "./components/Footer/Footer";
 import MenorPrecio from "./views/MenorPrecio/MenorPrecio";
 import MayorPrecio from "./views/MayorPrecio/MayorPrecio";
 import Error from "./views/Error/Error";
+import Checkout from "./views/Checkout/Checkout";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/minor" element={<MenorPrecio />} />
           <Route exact path="/mayor" element={<MayorPrecio />} />
+          <Route exact path="/checkout" element={<Checkout />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

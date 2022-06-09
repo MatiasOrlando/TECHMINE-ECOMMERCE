@@ -315,6 +315,16 @@
   color: gray;
 }
 
+.checkoutTitle {
+  margin-top: 40px;
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 137px;
+  padding: 20px 20px;
+  font-family: "Roboto";
+  color: gray;
+}
+
 .carrito {
   text-decoration: none;
   font-size: 20px;
@@ -511,6 +521,7 @@
   justify-content: space-evenly;
   padding-bottom: 50px;
   margin-top: 150px;
+  margin-bottom: 80px;
 }
 
 .homeImg {
@@ -559,6 +570,13 @@
   width: 70%;
   justify-content: flex-end;
 }
+
+.checkout {
+  padding: 60px 0;
+  background-color: #fff;
+  width: 70%;
+  margin-bottom: 100px;
+}
 .totalPrice {
   margin-right: 260px;
   font-family: "Roboto";
@@ -569,6 +587,11 @@
 }
 
 .cartView {
+  display: flex;
+  justify-content: center;
+}
+
+.checkoutView {
   display: flex;
   justify-content: center;
 }
@@ -725,10 +748,18 @@
   background-color: #fff;
   width: 70%;
   padding: 40px 0;
+  padding-left: 30px;
+}
+.personalDataOrder {
+  display: flex;
+  background-color: #fff;
+  width: 70%;
+  padding-top: 20px;
+  justify-content: center;
 }
 
 .textEmptyCart {
-  padding-left: 40px;
+  padding-left: 10px;
   font-family: "roboto";
   font-size: 18px;
 }
@@ -792,4 +823,190 @@
   font-size: 18px;
   color: gray;
   padding-bottom: 10px;
+}
+
+.goData {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.textPaymentMethod {
+  font-family: "roboto";
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.itemCheckout {
+  background-color: white;
+  width: 300px;
+  height: 300px;
+}
+
+.titleItemCheckout {
+  font-family: "Roboto";
+  font-size: 14px;
+}
+
+.imgItemCheckout {
+  width: 200px;
+  height: 200px;
+  margin-top: 10px;
+}
+
+.divImgCheckout {
+  display: flex;
+  justify-content: center;
+}
+
+.detailItemCheckout {
+  display: flex;
+  justify-content: center;
+}
+
+.divCheckout {
+  width: 80%;
+  margin-left: 2%;
+  margin-bottom: 80px;
+  font-family: "roboto";
+}
+
+.detailOrder {
+  background-color: white;
+  width: 80%;
+}
+
+.orderConfirmed {
+  margin-left: 25px;
+  padding-top: 30px;
+  font-family: "roboto";
+  font-size: 20px;
+  width: 95%;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 20px;
+}
+
+.detailOrderConfirmed {
+  font-size: 18px;
+  font-family: "roboto";
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+
+.detailOrderConfirmed2 {
+  font-size: 18px;
+  font-family: "roboto";
+  margin-left: 25px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reminder {
+  font-family: "roboto";
+  width: 85%;
+  padding-left: 25px;
+  padding-bottom: 25px;
+}
+
+.dataCustomer {
+  margin-left: 25px;
+  margin-bottom: 50px;
+}
+
+.priceCheckout {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-bottom: 40px;
+  padding-right: 30px;
+  font-family: "roboto";
+  font-size: 17px;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+button.learn-more {
+  width: 12rem;
+  height: auto;
+}
+
+button.learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #282936;
+  border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+}
+
+button.learn-more .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: #282936;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+button:hover .circle {
+  width: 100%;
+}
+
+button:hover .circle .icon.arrow {
+  background: #fff;
+  transform: translate(1rem, 0);
+}
+
+button:hover .button-text {
+  color: #fff;
 }

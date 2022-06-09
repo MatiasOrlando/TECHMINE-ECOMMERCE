@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { VscTrash } from "react-icons/vsc";
 import { NavLink, Link } from "react-router-dom";
 import CartItemCounter from "../CartItemCounter/CartItemCounter";
-import { contexto } from "../CustomProvider/CustomProvider";
+import { contexto } from "../../CustomProvider/CustomProvider";
 
 const CartProduct = ({ purchase }) => {
   const totalPricePerItem = purchase.price * purchase.quantity;

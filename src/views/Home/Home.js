@@ -1,6 +1,7 @@
 import React from "react";
 import CarouselHome from "../../components/CarouselHome/CarouselHome";
 import { NavLink } from "react-router-dom";
+import SwiperTest from "../../components/SwiperTest/SwiperTest";
 
 export default function Home() {
   return (
@@ -132,6 +133,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <SwiperTest />
     </>
   );
 }

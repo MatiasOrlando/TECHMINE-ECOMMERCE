@@ -179,7 +179,7 @@ const FormContacto = ({ setLoading }) => {
           />
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div>
-              <span class="bold">
+              <span className="bold">
                 <GiHouse style={{ marginBottom: "7px" }} />
                 <span style={{ paddingLeft: "5px" }}>Dirección</span>
               </span>
@@ -188,7 +188,7 @@ const FormContacto = ({ setLoading }) => {
               </p>
             </div>
             <div>
-              <span class="bold">
+              <span className="bold">
                 <BsFillEnvelopeFill style={{ marginBottom: "2px" }} />
                 <span style={{ paddingLeft: "5px" }}>Atención al cliente</span>
               </span>

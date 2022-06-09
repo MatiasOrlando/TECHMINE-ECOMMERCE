@@ -19,7 +19,7 @@ import TrustLogo from "../../assets/logoTrust/nav_trust.png";
 import { Link } from "react-router-dom";
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { contexto } from "../CustomProvider/CustomProvider";
+import { contexto } from "../../CustomProvider/CustomProvider";
 import { getFirestore, getDocs, collection } from "firebase/firestore";
 
 function NavBar() {
@@ -29,7 +29,7 @@ function NavBar() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
   const [startSearch, setStartSearch] = useState(false);
-  const [noMatches, setNoMatches] = useState(false);
+  const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
     const db = getFirestore();
@@ -46,23 +46,18 @@ function NavBar() {
   }, [value]);
 
   const handleSearch = (event) => {
-    console.log(value);
     event.preventDefault();
     if (value !== "") {
+      setStartSearch(true);
       setSearchTerm(
         products.filter((product) => {
           return product.title.toLowerCase().includes(value.toLowerCase());
         })
       );
-      setStartSearch(true);
-      if (searchTerm.length === 0) {
-        setNoMatches(true);
-      } else if (searchTerm.length > 0) {
-        setNoMatches(false);
-      }
-      console.log(searchTerm);
+      searchTerm.length === 0 ? setNoResults(true) : setNoResults(false);
     } else {
       setStartSearch(false);
+      setNoResults(false);
     }
   };
 
@@ -123,7 +118,7 @@ function NavBar() {
                       setValue(e.target.value);
                       if (e.target.value === "") {
                         setStartSearch(false);
-                        setNoMatches(false);
+                        setNoResults(false);
                       }
                     }}
                   />
@@ -141,7 +136,7 @@ function NavBar() {
                   </Button>
                 </div>
                 <div className="dropdown1">
-                  {startSearch && value !== ""
+                  {startSearch && !noResults
                     ? searchTerm.slice(0, 5).map((product) => (
                         <div
                           onClick={() => {
@@ -154,7 +149,7 @@ function NavBar() {
                         </div>
                       ))
                     : ""}
-                  {noMatches === true && (
+                  {noResults && (
                     <div className="dropdown-row">
                       NO SE HAN ENCONTRADO RESULTADOS
                     </div>

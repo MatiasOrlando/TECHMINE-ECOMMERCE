@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { NavLink } from "react-router-dom";
 import SpinnerLoader from "../LoadingSpinner/Spinner";
-import { contexto } from "../CustomProvider/CustomProvider";
+import { contexto } from "../../CustomProvider/CustomProvider";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = ({ titleDetalleProducto, id }) => {

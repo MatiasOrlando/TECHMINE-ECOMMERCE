@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import React, { useContext } from "react";
-import { contexto } from "../CustomProvider/CustomProvider";
+import { contexto } from "../../CustomProvider/CustomProvider";
 
 export default function CartWidget() {
   const { cart, addQty } = useContext(contexto);
