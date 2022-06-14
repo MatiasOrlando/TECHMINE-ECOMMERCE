@@ -1,6 +1,12 @@
 import React, { useState, useContext } from "react";
 import { contexto } from "../../CustomProvider/CustomProvider";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  doc,
+  runTransaction,
+} from "firebase/firestore";
 import FormCheckout from "../../components/FormCheckout/FormCheckout";
 
 import OrderConfirmed from "../../components/OrderConfirmed/OrderConfirmed";
@@ -14,6 +20,7 @@ const Checkout = () => {
     nombre: "",
     apellido: "",
     mail: "",
+    mailConfirmation: "",
     pais: "",
     ciudad: "",
     codigoPostal: "",
@@ -30,32 +37,52 @@ const Checkout = () => {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    setValidated(true);
+
     if (form.checkValidity() === false) {
       event.stopPropagation();
       event.preventDefault();
     }
 
+    if (formValues.mail !== formValues.mailConfirmation) {
+      setValidated(false);
+    }
     if (form.checkValidity() === true) {
+      setValidated(true);
       event.preventDefault();
       const order = {
         buyer: formValues,
         items: cart,
         total: totalSum(cart),
+        status: "generated",
         date: new Date().toLocaleString(),
       };
-      console.log(order);
       const db = getFirestore();
       const orderCollection = collection(db, "orders");
 
       addDoc(orderCollection, order).then(({ id }) => {
         setOrderId(id);
       });
+
       setOrderDone(true);
     }
+    updateStock();
   };
 
-  console.log(orderId);
+  //  Batch update stock una vez realizada la orden.
+  const updateStock = async () => {
+    const db = getFirestore();
+    cart.forEach(async (product) => {
+      const prodRef = doc(db, "productos", product.id);
+      await runTransaction(db, async (transaction) => {
+        const prod = await transaction.get(prodRef);
+        if (!prod.exists()) {
+          console.log("No existe el producto");
+        }
+        const newStock = prod.data().stock - product.quantity;
+        transaction.update(prodRef, { stock: newStock });
+      });
+    });
+  };
 
   return (
     <>

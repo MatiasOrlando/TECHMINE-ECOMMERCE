@@ -65,14 +65,14 @@ const OrderConfirmed = ({ orderId, cart, formValues, addQty, totalSum }) => {
             </div>
             <div>
               <button
-                class="learn-more"
+                className="learn-more"
                 style={{ marginRight: "20px" }}
                 onClick={() => navigateToHome("/home")}
               >
-                <span class="circle" aria-hidden="true">
-                  <span class="icon arrow"></span>
+                <span className="circle" aria-hidden="true">
+                  <span className="icon arrow"></span>
                 </span>
-                <span class="button-text">Inicio</span>
+                <span className="button-text">Inicio</span>
               </button>
             </div>
           </div>

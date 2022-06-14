@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Button, Row, Col, InputGroup } from "react-bootstrap";
-import SwiperTest from "../SwiperTest/SwiperTest";
 
 const FormCheckout = ({ formData, validated, handleSubmit }) => {
   return (
@@ -11,7 +10,7 @@ const FormCheckout = ({ formData, validated, handleSubmit }) => {
             style={{
               display: "flex",
               width: "1050px",
-              marginTop: "40px",
+              marginTop: "20px",
               borderBottom: "1px solid rgb(230, 230, 230)",
             }}
           >
@@ -68,6 +67,29 @@ const FormCheckout = ({ formData, validated, handleSubmit }) => {
                     />
                     <Form.Control.Feedback type="invalid">
                       Porfavor ingrese un email válido
+                    </Form.Control.Feedback>
+                  </InputGroup>
+                </Form.Group>
+                <Form.Group
+                  style={{ marginTop: "20px" }}
+                  as={Col}
+                  md="4"
+                  controlId="validationCustomUsername"
+                  mt="20px"
+                >
+                  <Form.Label>Confirme su email</Form.Label>
+                  <InputGroup hasValidation>
+                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                    <Form.Control
+                      type="text"
+                      placeholder="Mail"
+                      aria-describedby="inputGroupPrepend"
+                      name="mailConfirmation"
+                      onChange={formData}
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Porfavor debe coincidir con el mail ingresado
                     </Form.Control.Feedback>
                   </InputGroup>
                 </Form.Group>

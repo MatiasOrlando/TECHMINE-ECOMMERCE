@@ -29,7 +29,7 @@ function NavBar() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
   const [startSearch, setStartSearch] = useState(false);
-  const [noResults, setNoResults] = useState(false);
+  const [noResults, setNoResults] = useState("");
 
   useEffect(() => {
     const db = getFirestore();

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ListItem from "../ItemList/ItemList";
 import SpinnerLoader from "../LoadingSpinner/Spinner";
+import { useNavigate } from "react-router-dom";
 import {
   getFirestore,
   query,
@@ -19,6 +20,7 @@ export default function ItemsListContainer({
 }) {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
+  const navigateTo404 = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -87,9 +89,13 @@ export default function ItemsListContainer({
       );
       getDocs(categoryFilter)
         .then((snapshots) => {
-          setItems(
-            snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-          );
+          if (snapshots.docs.length === 0) {
+            navigateTo404("/404");
+          } else {
+            setItems(
+              snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+            );
+          }
         })
         .finally(() => setLoading(false));
     }

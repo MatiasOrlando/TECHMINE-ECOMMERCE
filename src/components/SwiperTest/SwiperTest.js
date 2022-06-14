@@ -10,7 +10,6 @@ const SwiperTest = () => {
       modules={[Autoplay]}
       spaceBetween={50}
       slidesPerView={6}
-      onSlideChange=""
       onSwiper=""
       autoplay={true}
       style={{ backgroundColor: "white" }}

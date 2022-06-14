@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import SpinnerLoader from "../LoadingSpinner/Spinner";
 import { contexto } from "../../CustomProvider/CustomProvider";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
@@ -9,6 +9,7 @@ const ItemDetailContainer = ({ titleDetalleProducto, id }) => {
   const { setActiveAddToCartButton, setRedBorder } = useContext(contexto);
   const [detailProduct, setDetailProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigateTo404 = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -17,7 +18,13 @@ const ItemDetailContainer = ({ titleDetalleProducto, id }) => {
     const db = getFirestore();
     const productRef = doc(db, "productos", id);
     getDoc(productRef)
-      .then((doc) => setDetailProduct({ id: doc.id, ...doc.data() }))
+      .then((doc) => {
+        if (doc.data() !== undefined) {
+          setDetailProduct({ id: doc.id, ...doc.data() });
+        } else {
+          navigateTo404("/404");
+        }
+      })
       .finally(() => setLoading(false));
   }, [id]);
 
