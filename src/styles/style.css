@@ -574,7 +574,7 @@
 .checkout {
   padding: 60px 0;
   background-color: #fff;
-  width: 70%;
+  width: 90%;
   margin-bottom: 100px;
 }
 .totalPrice {
@@ -593,7 +593,7 @@
 
 .checkoutView {
   display: flex;
-  justify-content: center;
+  margin-left: 157px;
 }
 
 .deleteItem {
@@ -673,6 +673,7 @@
   border: 1px solid gray;
   position: absolute;
   margin-top: 42px;
+  z-index: 2;
 }
 
 .dropdown:empty {
@@ -753,7 +754,7 @@
 .personalDataOrder {
   display: flex;
   background-color: #fff;
-  width: 70%;
+  width: 90%;
   padding-top: 20px;
   justify-content: center;
 }
@@ -845,6 +846,7 @@
 .titleItemCheckout {
   font-family: "Roboto";
   font-size: 14px;
+  text-align: center;
 }
 
 .imgItemCheckout {
@@ -1009,4 +1011,20 @@ button:hover .circle .icon.arrow {
 
 button:hover .button-text {
   color: #fff;
+}
+
+.formCheckoutTotal {
+  background-color: white;
+  width: 285px;
+  margin-left: 2px;
+  font-family: "Roboto";
+  padding: 3%;
+  margin-top: 25px;
+  margin-bottom: 55px;
+}
+.totalSum {
+  font-weight: bolder;
+  padding: 1%;
+  border-bottom: solid 1px rgb(230, 230, 230);
+  margin-bottom: 10px;
 }

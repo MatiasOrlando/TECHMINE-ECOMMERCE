@@ -28,8 +28,7 @@ function NavBar() {
   const { addedToCart } = useContext(contexto);
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
-  const [startSearch, setStartSearch] = useState(false);
-  const [noResults, setNoResults] = useState("");
+  const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
     const db = getFirestore();
@@ -43,22 +42,18 @@ function NavBar() {
       .catch((error) => {
         console.log(error);
       });
-  }, [value]);
+  }, []);
 
   const handleSearch = (event) => {
     event.preventDefault();
-    if (value !== "") {
-      setStartSearch(true);
-      setSearchTerm(
-        products.filter((product) => {
-          return product.title.toLowerCase().includes(value.toLowerCase());
-        })
-      );
-      searchTerm.length === 0 ? setNoResults(true) : setNoResults(false);
-    } else {
-      setStartSearch(false);
-      setNoResults(false);
-    }
+    value !== ""
+      ? setSearchTerm(
+          products.filter((product) => {
+            return product.title.toLowerCase().includes(value.toLowerCase());
+          })
+        )
+      : setSearchTerm([]);
+    setNoResults(true);
   };
 
   return (
@@ -115,10 +110,12 @@ function NavBar() {
                     className="me-2"
                     aria-label="Search"
                     onChange={(e) => {
-                      setValue(e.target.value);
                       if (e.target.value === "") {
-                        setStartSearch(false);
+                        setValue("");
+                        setSearchTerm([]);
                         setNoResults(false);
+                      } else {
+                        setValue(e.target.value);
                       }
                     }}
                   />
@@ -136,23 +133,24 @@ function NavBar() {
                   </Button>
                 </div>
                 <div className="dropdown1">
-                  {startSearch && !noResults
-                    ? searchTerm.slice(0, 5).map((product) => (
-                        <div
-                          onClick={() => {
-                            navegarAProducto(`product/${product.id}`);
-                          }}
-                          className="dropdown-row"
-                          key={product.id}
-                        >
-                          {product.title}{" "}
-                        </div>
-                      ))
-                    : ""}
-                  {noResults && (
+                  {searchTerm.length >= 1 ? (
+                    searchTerm.slice(0, 5).map((product) => (
+                      <div
+                        onClick={() => {
+                          navegarAProducto(`product/${product.id}`);
+                        }}
+                        className="dropdown-row"
+                        key={product.id}
+                      >
+                        {product.title}{" "}
+                      </div>
+                    ))
+                  ) : searchTerm.length === 0 && noResults ? (
                     <div className="dropdown-row">
                       NO SE HAN ENCONTRADO RESULTADOS
                     </div>
+                  ) : (
+                    ""
                   )}
                 </div>
               </div>

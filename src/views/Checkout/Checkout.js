@@ -11,8 +11,9 @@ import FormCheckout from "../../components/FormCheckout/FormCheckout";
 
 import OrderConfirmed from "../../components/OrderConfirmed/OrderConfirmed";
 import SwiperTest from "../../components/SwiperTest/SwiperTest";
+import swal from "sweetalert";
 const Checkout = () => {
-  const { cart, totalSum, addQty } = useContext(contexto);
+  const { cart, totalSum, addQty, deleteAll } = useContext(contexto);
   const [validated, setValidated] = useState(false);
   const [orderDone, setOrderDone] = useState(false);
   const [orderId, setOrderId] = useState("");
@@ -37,15 +38,17 @@ const Checkout = () => {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-
+    setValidated(true);
+    event.preventDefault();
     if (form.checkValidity() === false) {
       event.stopPropagation();
       event.preventDefault();
     }
 
     if (formValues.mail !== formValues.mailConfirmation) {
-      setValidated(false);
+      return false;
     }
+
     if (form.checkValidity() === true) {
       setValidated(true);
       event.preventDefault();
@@ -64,8 +67,8 @@ const Checkout = () => {
       });
 
       setOrderDone(true);
+      updateStock();
     }
-    updateStock();
   };
 
   //  Batch update stock una vez realizada la orden.
@@ -76,7 +79,7 @@ const Checkout = () => {
       await runTransaction(db, async (transaction) => {
         const prod = await transaction.get(prodRef);
         if (!prod.exists()) {
-          console.log("No existe el producto");
+          swal("Producto no existe");
         }
         const newStock = prod.data().stock - product.quantity;
         transaction.update(prodRef, { stock: newStock });
@@ -87,7 +90,12 @@ const Checkout = () => {
   return (
     <>
       <div>
-        <div className="checkoutTitle">CHECKOUT /</div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div className="checkoutTitle">CHECKOUT /</div>
+          <div className="checkoutTitle" style={{ marginRight: "175px" }}>
+            Mi Compra
+          </div>
+        </div>
         {orderDone ? (
           <OrderConfirmed
             orderId={orderId}
@@ -95,12 +103,14 @@ const Checkout = () => {
             formValues={formValues}
             addQty={addQty}
             totalSum={totalSum}
+            deleteAll={deleteAll}
           />
         ) : (
           <FormCheckout
             formData={formData}
             handleSubmit={handleSubmit}
             validated={validated}
+            formValues={formValues}
           />
         )}
       </div>

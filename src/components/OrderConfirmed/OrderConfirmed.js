@@ -3,7 +3,14 @@ import { BsQuestionCircleFill } from "react-icons/bs";
 import CheckoutItem from "../../components/CheckoutItem/CheckoutItem";
 import { useNavigate } from "react-router-dom";
 
-const OrderConfirmed = ({ orderId, cart, formValues, addQty, totalSum }) => {
+const OrderConfirmed = ({
+  orderId,
+  cart,
+  formValues,
+  addQty,
+  totalSum,
+  deleteAll,
+}) => {
   const navigateToHome = useNavigate();
   return (
     <div
@@ -67,7 +74,10 @@ const OrderConfirmed = ({ orderId, cart, formValues, addQty, totalSum }) => {
               <button
                 className="learn-more"
                 style={{ marginRight: "20px" }}
-                onClick={() => navigateToHome("/home")}
+                onClick={() => {
+                  navigateToHome("/home");
+                  deleteAll();
+                }}
               >
                 <span className="circle" aria-hidden="true">
                   <span className="icon arrow"></span>

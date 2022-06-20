@@ -15,6 +15,7 @@ const ItemDetail = ({ detailProduct }) => {
   const navegarACart = useNavigate();
   const [count, setCount] = useState(1);
   const [fakeCondition, setFakeCondition] = React.useState(false);
+  const [noStock, setNoStock] = useState(false);
 
   const {
     addToCart,
@@ -59,6 +60,12 @@ const ItemDetail = ({ detailProduct }) => {
     }
   }, [count]);
 
+  useEffect(() => {
+    if (stock === 0) {
+      setNoStock(true);
+    }
+  }, [stock]);
+
   // Componente de presentación
   const AddButton = ({ onSubmit }) => {
     return (
@@ -77,6 +84,7 @@ const ItemDetail = ({ detailProduct }) => {
               backgroundColor: "white",
               borderRadius: "4px",
             }}
+            disabled={noStock ? true : false}
             className="add-button"
             onClick={onSubmit}
           >
@@ -152,7 +160,9 @@ const ItemDetail = ({ detailProduct }) => {
             ¡12 cuotas de ${(price / 12).toFixed(2)}!
           </div>
           <div className="tags">
-            <span className="tag tag-stock">En stock</span>
+            <span className="tag tag-stock">
+              {noStock ? "No hay stock" : "En stock"}
+            </span>
           </div>
           <ItemCount
             count={count}
@@ -165,6 +175,7 @@ const ItemDetail = ({ detailProduct }) => {
             redBorder={redBorder}
             fakeCondition={fakeCondition}
           />
+
           {activeAddToCartButton >= 1 ? (
             <div className="btnEndPurchase">
               <button
@@ -177,6 +188,7 @@ const ItemDetail = ({ detailProduct }) => {
             </div>
           ) : (
             <AddButton
+              noStock={noStock}
               onSubmit={() => {
                 addToCart(detailProduct, count);
                 setAddedToCart(true);
