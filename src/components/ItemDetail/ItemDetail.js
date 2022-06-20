@@ -28,6 +28,7 @@ const ItemDetail = ({ detailProduct }) => {
     maxStock,
     setMaxStock,
     setAddedToCart,
+    buyProduct,
   } = useContext(contexto);
 
   const handleAddItem = (count) => {
@@ -75,7 +76,6 @@ const ItemDetail = ({ detailProduct }) => {
             display: "flex",
             justifyContent: "space-around",
             paddingRight: "40px",
-            marginTop: "30px",
           }}
         >
           <Button
@@ -93,7 +93,6 @@ const ItemDetail = ({ detailProduct }) => {
               style={{ height: "15px", width: "15px", color: "0077f9" }}
             />
           </Button>
-          <Button variant="primary">Comprar</Button>
         </div>
       </>
     );
@@ -187,18 +186,28 @@ const ItemDetail = ({ detailProduct }) => {
               </button>
             </div>
           ) : (
-            <AddButton
-              noStock={noStock}
-              onSubmit={() => {
-                addToCart(detailProduct, count);
-                setAddedToCart(true);
-                setFakeCondition(true);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                setTimeout(() => {
-                  setAddedToCart(false);
-                }, 1300);
-              }}
-            />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <AddButton
+                noStock={noStock}
+                onSubmit={() => {
+                  addToCart(detailProduct, count);
+                  setAddedToCart(true);
+                  setFakeCondition(true);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setTimeout(() => {
+                    setAddedToCart(false);
+                  }, 1300);
+                }}
+              />
+              <Button
+                variant="primary"
+                onClick={() => buyProduct(detailProduct, count)}
+                style={{ height: "38px" }}
+              >
+                {" "}
+                Comprar
+              </Button>
+            </div>
           )}
         </div>
       </div>

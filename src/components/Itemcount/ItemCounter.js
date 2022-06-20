@@ -16,6 +16,7 @@ export default function ItemCount({
         display: "flex",
         justifyContent: "center",
         marginBottom: "80px",
+        marginLeft: "25px",
       }}
     >
       <div>

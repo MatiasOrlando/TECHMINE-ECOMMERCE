@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const contexto = createContext();
 const { Provider } = contexto;
@@ -12,6 +13,7 @@ const CustomProvider = ({ children }) => {
   const [redBorder, setRedBorder] = useState(false);
   const [maxStock, setMaxStock] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false);
+  const navigateToCheckout = useNavigate();
 
   const handleOnSubmit = (count) => {
     if (count === 1) {
@@ -60,6 +62,21 @@ const CustomProvider = ({ children }) => {
       setCart([...cart, { ...product, quantity: +count }]);
     }
     handleOnSubmit(count);
+  };
+
+  const buyProduct = (product, count) => {
+    if (isInCart(product.id)) {
+      const updatedCart = cart.map((productCart) => {
+        if (productCart.id === product.id) {
+          productCart.quantity++;
+        }
+        return productCart;
+      });
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { ...product, quantity: +count }]);
+    }
+    navigateToCheckout("/checkout");
   };
 
   const addToCartCounter = (product, count) => {
@@ -139,6 +156,7 @@ const CustomProvider = ({ children }) => {
     totalSum: totalSum,
     addedToCart: addedToCart,
     setAddedToCart: setAddedToCart,
+    buyProduct: buyProduct,
   };
 
   return <Provider value={valueContext}>{children}</Provider>;
