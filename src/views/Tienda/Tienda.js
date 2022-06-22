@@ -4,12 +4,11 @@ import { useState } from "react";
 import SwiperTest from "../../components/SwiperTest/SwiperTest";
 
 export default function Tienda() {
-  const navegarAPreciosOrdenadosAsc = useNavigate();
-  const navegarAPreciosOrdenadosDesc = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const [isCheckedProcesadores, setIsCheckedProcesadores] = useState(false);
   const [isCheckedDiscos, setIsCheckedDiscos] = useState(false);
-
+  const navegarAMinor = useNavigate();
+  const navegarAMayor = useNavigate();
   const handleCheck = () => {
     setIsChecked(!isChecked);
   };
@@ -39,19 +38,17 @@ export default function Tienda() {
           <p className="titleOrderProducts"> Ordenar por:</p>
           <div className="divFiltroPrecios">
             <button
-              onClick={() => navegarAPreciosOrdenadosAsc("/minor")}
+              onClick={() => navegarAMinor("/minor")}
               className="btn btn-outline"
               id="btnPriceFilter"
             >
-              {" "}
               Menor precio
             </button>
             <button
-              onClick={() => navegarAPreciosOrdenadosDesc("/mayor")}
+              onClick={() => navegarAMayor("/mayor")}
               className="btn btn-outline"
               id="btnPriceFilter"
             >
-              {" "}
               Mayor precio
             </button>
           </div>

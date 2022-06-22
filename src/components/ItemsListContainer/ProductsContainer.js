@@ -25,6 +25,50 @@ export default function ItemsListContainer({
   useEffect(() => {
     setLoading(true);
     const db = getFirestore();
+
+    // if (expensiveItems) {
+    //   setCheaperItems(false);
+    //   const db = getFirestore();
+    //   const itemsRef = query(
+    //     collection(db, "productos"),
+    //     orderBy("price", "desc")
+    //   );
+    //   getDocs(itemsRef)
+    //     .then((snapshots) => {
+    //       setItems(
+    //         snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+    //       );
+    //     })
+    //     .finally(() => setLoading(false));
+    // } else {
+    //   const itemsRef = collection(db, "productos");
+    //   getDocs(itemsRef)
+    //     .then((snapshots) => {
+    //       setItems(
+    //         snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+    //       );
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     })
+    //     .finally(() => setLoading(false));
+    // }
+
+    // if (cheaperItems) {
+    //   const db = getFirestore();
+    //   const itemsRef = query(
+    //     collection(db, "productos"),
+    //     orderBy("price", "asc")
+    //   );
+    //   getDocs(itemsRef)
+    //     .then((snapshots) => {
+    //       setItems(
+    //         snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+    //       );
+    //     })
+    //     .finally(() => setLoading(false));
+    // }
+
     if (isCheckedDiscos) {
       const categoryFilter = query(
         collection(db, "productos"),

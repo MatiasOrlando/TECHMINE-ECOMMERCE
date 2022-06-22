@@ -4,7 +4,7 @@ TECHMINE, es una aplicacion web e-commerce que le permite a sus usuarios poder a
 
 ## Demo
 
-<img width= "690px"  height="388px" alt="Gif app web" src=./public/images/gif.gif>
+<img width= "690px"  height="388px" alt="Gif app web" src=./public/images/techmineApp.gif>
 
 <br>
 <br>

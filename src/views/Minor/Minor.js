@@ -10,7 +10,7 @@ import {
   collection,
 } from "firebase/firestore";
 
-const MenorPrecio = () => {
+const Minor = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -48,4 +48,4 @@ const MenorPrecio = () => {
   );
 };
 
-export default MenorPrecio;
+export default Minor;
