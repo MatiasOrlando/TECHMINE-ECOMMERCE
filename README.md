@@ -11,7 +11,7 @@ TECHMINE, es una aplicacion web e-commerce que le permite a sus usuarios poder a
 
 ## Deploy
 
-<p>Para poder visualizar y utilizar la app ingrese al siguiente link: <a for="https://proyectotechreact-orlando.vercel.app/"> https://proyectotechreact-orlando.vercel.app/  </>
+<p>Para poder visualizar y utilizar la app ingrese al siguiente <a href="https://proyectotechreact-orlando.vercel.app/">link</a>
 
 ## Instalación 🔧
 
