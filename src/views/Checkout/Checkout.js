@@ -109,6 +109,7 @@ const Checkout = () => {
             formData={formData}
             handleSubmit={handleSubmit}
             validated={validated}
+            formValues={formValues}
           />
         )}
       </div>
