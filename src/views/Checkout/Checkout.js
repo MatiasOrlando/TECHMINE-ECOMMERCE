@@ -45,6 +45,7 @@ const Checkout = () => {
       event.preventDefault();
     }
 
+    // Si los mails ingresados no coinciden no se puede finalizar la orden
     if (formValues.mail !== formValues.mailConfirmation) {
       return false;
     }
@@ -61,11 +62,9 @@ const Checkout = () => {
       };
       const db = getFirestore();
       const orderCollection = collection(db, "orders");
-
       addDoc(orderCollection, order).then(({ id }) => {
         setOrderId(id);
       });
-
       setOrderDone(true);
       updateStock();
     }
@@ -110,7 +109,6 @@ const Checkout = () => {
             formData={formData}
             handleSubmit={handleSubmit}
             validated={validated}
-            formValues={formValues}
           />
         )}
       </div>

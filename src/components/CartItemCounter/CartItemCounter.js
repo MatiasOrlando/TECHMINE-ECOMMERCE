@@ -4,20 +4,23 @@ import { contexto } from "../../CustomProvider/CustomProvider";
 const CartItemCounter = ({ purchase }) => {
   const [buttonActive, setButtonActive] = useState(true);
   const [decreaseBlock, setDecreaseBlock] = useState("");
-  const { reduceQty, addToCartCounter, cart } = useContext(contexto);
+  const { reduceQty, addToCart, cart } = useContext(contexto);
   const [cartCounter, setCartCounter] = useState(purchase.quantity);
   useEffect(() => {
     setCartCounter(purchase.quantity);
   }, [cart]);
 
+  // Añade cantidad del producto seleccionado en carrito
   const increaseQty = () => {
     if (cartCounter < purchase.stock) {
-      addToCartCounter(purchase, 1);
+      addToCart(purchase, 1);
       setCartCounter((count) => (count = purchase.quantity));
       setButtonActive(true);
       setDecreaseBlock("");
     }
   };
+
+  // Reduce la cantidad del producto seleccionado  en carrito
   const decreaseQty = () => {
     if (cartCounter > 1) {
       reduceQty(purchase, 1);

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Form, Button, Row, Col, InputGroup } from "react-bootstrap";
 import CheckoutItemForm from "../CheckoutItemForm/CheckoutItemForm";
 import { contexto } from "../../CustomProvider/CustomProvider";
-const FormCheckout = ({ formData, validated, handleSubmit, formValues }) => {
+const FormCheckout = ({ formData, validated, handleSubmit }) => {
   const { cart, addQty, totalSum } = useContext(contexto);
   return (
     <>
@@ -98,13 +98,7 @@ const FormCheckout = ({ formData, validated, handleSubmit, formValues }) => {
                           onChange={formData}
                           required
                         />
-                        <Form.Control.Feedback
-                          type={
-                            formValues.mail === formValues.mailConfirmation
-                              ? "valid"
-                              : "invalid"
-                          }
-                        >
+                        <Form.Control.Feedback>
                           Porfavor debe coincidir con el mail ingresado
                         </Form.Control.Feedback>
                       </InputGroup>

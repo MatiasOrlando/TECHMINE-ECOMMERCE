@@ -9,6 +9,7 @@ export default function Tienda() {
   const [isCheckedDiscos, setIsCheckedDiscos] = useState(false);
   const navegarAMinor = useNavigate();
   const navegarAMayor = useNavigate();
+
   const handleCheck = () => {
     setIsChecked(!isChecked);
   };

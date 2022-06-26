@@ -24,13 +24,14 @@ const ItemDetail = ({ detailProduct }) => {
     buttonAddActive,
     buttonDecreaseActive,
     activeAddToCartButton,
-    redBorder,
+    blackBorder,
     maxStock,
     setMaxStock,
     setAddedToCart,
     buyProduct,
   } = useContext(contexto);
 
+  // Funcion que aumenta el contador
   const handleAddItem = (count) => {
     if (count < stock) {
       setCount(count + 1);
@@ -43,6 +44,7 @@ const ItemDetail = ({ detailProduct }) => {
     }
   };
 
+  // Funcion que disminuye el contador
   const handleDecrementItem = (count) => {
     if (count > 1) {
       setCount(count - 1);
@@ -171,7 +173,7 @@ const ItemDetail = ({ detailProduct }) => {
             buttonAddActive={buttonAddActive}
             buttonDecreaseActive={buttonDecreaseActive}
             maxStock={maxStock}
-            redBorder={redBorder}
+            blackBorder={blackBorder}
             fakeCondition={fakeCondition}
           />
 

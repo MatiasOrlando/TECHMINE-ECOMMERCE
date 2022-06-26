@@ -6,15 +6,17 @@ import { contexto } from "../../CustomProvider/CustomProvider";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = ({ titleDetalleProducto, id }) => {
-  const { setActiveAddToCartButton, setRedBorder } = useContext(contexto);
+  const { setActiveAddToCartButton, setBlackBorder } = useContext(contexto);
   const [detailProduct, setDetailProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigateTo404 = useNavigate();
 
   useEffect(() => {
+    setBlackBorder(false);
     setLoading(true);
     setActiveAddToCartButton(0);
-    setRedBorder(false);
+
+    // Se realiza peticion a firebase y trae el producto que corresponde al id
     const db = getFirestore();
     const productRef = doc(db, "productos", id);
     getDoc(productRef)

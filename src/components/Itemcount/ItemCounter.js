@@ -7,7 +7,7 @@ export default function ItemCount({
   buttonAddActive,
   buttonDecreaseActive,
   maxStock,
-  redBorder,
+  blackBorder,
   fakeCondition,
 }) {
   return (
@@ -21,7 +21,7 @@ export default function ItemCount({
     >
       <div>
         <div
-          className={redBorder ? "itemCounter2" : "ItemCounter"}
+          className={blackBorder ? "itemCounter2" : "ItemCounter"}
           style={{
             display: "flex",
             justifyContent: "center",

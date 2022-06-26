@@ -26,49 +26,7 @@ export default function ItemsListContainer({
     setLoading(true);
     const db = getFirestore();
 
-    // if (expensiveItems) {
-    //   setCheaperItems(false);
-    //   const db = getFirestore();
-    //   const itemsRef = query(
-    //     collection(db, "productos"),
-    //     orderBy("price", "desc")
-    //   );
-    //   getDocs(itemsRef)
-    //     .then((snapshots) => {
-    //       setItems(
-    //         snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-    //       );
-    //     })
-    //     .finally(() => setLoading(false));
-    // } else {
-    //   const itemsRef = collection(db, "productos");
-    //   getDocs(itemsRef)
-    //     .then((snapshots) => {
-    //       setItems(
-    //         snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-    //       );
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     })
-    //     .finally(() => setLoading(false));
-    // }
-
-    // if (cheaperItems) {
-    //   const db = getFirestore();
-    //   const itemsRef = query(
-    //     collection(db, "productos"),
-    //     orderBy("price", "asc")
-    //   );
-    //   getDocs(itemsRef)
-    //     .then((snapshots) => {
-    //       setItems(
-    //         snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-    //       );
-    //     })
-    //     .finally(() => setLoading(false));
-    // }
-
+    // Se realiza peticion a Firebase y trae los productos que corresponden a los criterios de precio en oferta y categoria seleccionada ("discos ssd  - precio < 3500")
     if (isCheckedDiscos) {
       const categoryFilter = query(
         collection(db, "productos"),
@@ -96,6 +54,7 @@ export default function ItemsListContainer({
         .finally(() => setLoading(false));
     }
 
+    // Se realiza peticion a Firebase y trae los productos que corresponden a los criterios de precio en oferta y categoria seleccionada ("procesadores - precio < 8000")
     if (isCheckedProcesadores) {
       const categoryFilter = query(
         collection(db, "productos"),
@@ -111,6 +70,7 @@ export default function ItemsListContainer({
         .finally(() => setLoading(false));
     }
 
+    // Se realiza peticion a Firebase y trae los productos que corresponden a los criterios de precio en oferta y categoria seleccionada ("placas de video - precio < 35000")
     if (isChecked) {
       const categoryFilter = query(
         collection(db, "productos"),
@@ -126,6 +86,7 @@ export default function ItemsListContainer({
         .finally(() => setLoading(false));
     }
 
+    // Se realiza peticion a Firebase y trae los productos que corresponden a la categoria seleccionada.
     if (categoryId) {
       const categoryFilter = query(
         collection(db, "productos"),

@@ -44,6 +44,7 @@ function NavBar() {
       });
   }, []);
 
+  // Funcion que activa la busqueda de productos en la base de Firebase en base al valor ingresado por el usuario
   const handleSearch = (event) => {
     event.preventDefault();
     value !== ""
@@ -133,25 +134,26 @@ function NavBar() {
                   </Button>
                 </div>
                 <div className="dropdown1">
-                  {searchTerm.length >= 1 ? (
-                    searchTerm.slice(0, 5).map((product) => (
-                      <div
-                        onClick={() => {
-                          navegarAProducto(`product/${product.id}`);
-                        }}
-                        className="dropdown-row"
-                        key={product.id}
-                      >
-                        {product.title}{" "}
-                      </div>
-                    ))
-                  ) : searchTerm.length === 0 && noResults ? (
-                    <div className="dropdown-row">
-                      NO SE HAN ENCONTRADO RESULTADOS
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                  {/* Si hay coincidencias en la peticion */}
+                  {searchTerm.length >= 1
+                    ? searchTerm.slice(0, 5).map((product) => (
+                        <div
+                          onClick={() => {
+                            navegarAProducto(`product/${product.id}`);
+                          }}
+                          className="dropdown-row"
+                          key={product.id}
+                        >
+                          {product.title}{" "}
+                        </div>
+                      ))
+                    : // Si no hay coincidencias
+                      searchTerm.length === 0 &&
+                      noResults && (
+                        <div className="dropdown-row">
+                          NO SE HAN ENCONTRADO RESULTADOS
+                        </div>
+                      )}
                 </div>
               </div>
             </Form>
