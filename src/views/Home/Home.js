@@ -3,7 +3,9 @@ import CarouselHome from "../../components/CarouselHome/CarouselHome";
 import { NavLink } from "react-router-dom";
 import SwiperTest from "../../components/SwiperTest/SwiperTest";
 
-export default function Home() {
+export default function Home({ setShowNav, setShowFoot }) {
+  setShowNav(true);
+  setShowFoot(true);
   return (
     <>
       <CarouselHome />

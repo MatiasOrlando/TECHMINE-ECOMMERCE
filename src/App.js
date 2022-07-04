@@ -1,5 +1,5 @@
 import NavBar from "./components/Navbar/NavBar";
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/Home/Home";
 import Contacto from "./views/Contacto/Contacto";
@@ -15,13 +15,25 @@ import Minor from "./views/Minor/Minor";
 import Mayor from "./views/Mayor/Mayor";
 
 function App() {
+  const [showNav, setShowNav] = useState(true);
+  const [showFoot, setShowFoot] = useState(true);
+
   return (
     <BrowserRouter>
       <CustomProvider>
-        <NavBar />
+        {showNav && <NavBar />}
+
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/home" element={<Home />} />
+          <Route
+            exact
+            path="/"
+            element={<Home setShowNav={setShowNav} setShowFoot={setShowFoot} />}
+          />
+          <Route
+            exact
+            path="/home"
+            element={<Home setShowNav={setShowNav} setShowFoot={setShowFoot} />}
+          />
           <Route exact path="/tienda" element={<Tienda />} />
           <Route exact path="/product/:id" element={<Product />} />
           <Route exact path="/category/:categoryId" element={<Category />} />
@@ -30,9 +42,14 @@ function App() {
           <Route exact path="/mayor" element={<Mayor />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/checkout" element={<Checkout />} />
-          <Route path="*" element={<Error />} />
+          <Route
+            path="*"
+            element={
+              <Error setShowNav={setShowNav} setShowFoot={setShowFoot} />
+            }
+          />
         </Routes>
-        <Footer />
+        {showFoot && <Footer />}
       </CustomProvider>
     </BrowserRouter>
   );

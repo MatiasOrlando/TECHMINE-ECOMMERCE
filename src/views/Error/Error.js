@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Error = () => {
+const Error = ({ setShowNav, setShowFoot }) => {
+  setShowNav(false);
+  setShowFoot(false);
   return (
     <NavLink to="/home">
       <img
