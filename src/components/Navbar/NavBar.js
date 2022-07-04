@@ -133,7 +133,10 @@ function NavBar() {
                     </svg>
                   </Button>
                 </div>
-                <div className="dropdown1">
+                <div
+                  className="dropdown1"
+                  style={{ display: searchTerm.length >= 1 ? "flex" : "none" }}
+                >
                   {/* Si hay coincidencias en la peticion */}
                   {searchTerm.length >= 1
                     ? searchTerm.slice(0, 5).map((product) => (
