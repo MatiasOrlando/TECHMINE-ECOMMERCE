@@ -135,7 +135,9 @@ function NavBar() {
                 </div>
                 <div
                   className="dropdown1"
-                  style={{ display: searchTerm.length >= 1 ? "flex" : "none" }}
+                  style={{
+                    display: noResults && value.length >= 1 ? "flex" : "none",
+                  }}
                 >
                   {/* Si hay coincidencias en la peticion */}
                   {searchTerm.length >= 1
