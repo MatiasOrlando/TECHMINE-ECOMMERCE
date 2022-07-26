@@ -1,25 +1,37 @@
 import ItemsListContainer from "../../components/ItemsListContainer/ProductsContainer";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useState, useContext } from "react";
 import SwiperTest from "../../components/SwiperTest/SwiperTest";
+import { contexto } from "../../CustomProvider/CustomProvider";
 
 export default function Tienda() {
+  const { data, setData } = useContext(contexto);
   const [isChecked, setIsChecked] = useState(false);
   const [isCheckedProcesadores, setIsCheckedProcesadores] = useState(false);
   const [isCheckedDiscos, setIsCheckedDiscos] = useState(false);
-  const navegarAMinor = useNavigate();
-  const navegarAMayor = useNavigate();
 
   const handleCheck = () => {
+    setData("placas");
     setIsChecked(!isChecked);
+    if (isChecked) {
+      setData("default");
+    }
   };
 
   const handleCheckProcesadores = () => {
+    setData("procesadores");
     setIsCheckedProcesadores(!isCheckedProcesadores);
+    if (isCheckedProcesadores) {
+      setData("default");
+    }
   };
 
   const handleCheckDiscos = () => {
+    setData("discos");
     setIsCheckedDiscos(!isCheckedDiscos);
+    if (isCheckedDiscos) {
+      setData("default");
+    }
   };
   return (
     <div className="productosYCategorias">
@@ -39,18 +51,25 @@ export default function Tienda() {
           <p className="titleOrderProducts"> Ordenar por:</p>
           <div className="divFiltroPrecios">
             <button
-              onClick={() => navegarAMinor("/minor")}
+              onClick={() => setData("minor")}
               className="btn btn-outline"
               id="btnPriceFilter"
             >
               Menor precio
             </button>
             <button
-              onClick={() => navegarAMayor("/mayor")}
+              onClick={() => setData("mayor")}
               className="btn btn-outline"
               id="btnPriceFilter"
             >
               Mayor precio
+            </button>
+            <button
+              onClick={() => setData("default")}
+              className="btn btn-outline"
+              id="btnPriceFilter"
+            >
+              Vista normal
             </button>
           </div>
           <div className="hotsale">
@@ -93,6 +112,7 @@ export default function Tienda() {
             isCheckedProcesadores={isCheckedProcesadores}
             setIsChecked={setIsChecked}
             isCheckedDiscos={isCheckedDiscos}
+            data={data}
           />
         </div>
       </div>

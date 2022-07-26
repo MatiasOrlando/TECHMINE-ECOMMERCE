@@ -8,6 +8,7 @@ import {
   getDocs,
   collection,
   where,
+  orderBy,
 } from "firebase/firestore";
 
 export default function ItemsListContainer({
@@ -17,6 +18,7 @@ export default function ItemsListContainer({
   isChecked,
   isCheckedProcesadores,
   isCheckedDiscos,
+  data,
 }) {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
@@ -25,68 +27,6 @@ export default function ItemsListContainer({
   useEffect(() => {
     setLoading(true);
     const db = getFirestore();
-
-    // Se realiza peticion a Firebase y trae los productos que corresponden a los criterios de precio en oferta y categoria seleccionada ("discos ssd  - precio < 3500")
-    if (isCheckedDiscos) {
-      const categoryFilter = query(
-        collection(db, "productos"),
-        where("price", "<", 3500),
-        where("categoryId", "==", "discos-ssd")
-      );
-      getDocs(categoryFilter)
-        .then((snapshots) => {
-          setItems(
-            snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-          );
-        })
-        .finally(() => setLoading(false));
-    } else {
-      const itemsRef = collection(db, "productos");
-      getDocs(itemsRef)
-        .then((snapshots) => {
-          setItems(
-            snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => setLoading(false));
-    }
-
-    // Se realiza peticion a Firebase y trae los productos que corresponden a los criterios de precio en oferta y categoria seleccionada ("procesadores - precio < 8000")
-    if (isCheckedProcesadores) {
-      const categoryFilter = query(
-        collection(db, "productos"),
-        where("price", "<", 8000),
-        where("categoryId", "==", "procesadores")
-      );
-      getDocs(categoryFilter)
-        .then((snapshots) => {
-          setItems(
-            snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-          );
-        })
-        .finally(() => setLoading(false));
-    }
-
-    // Se realiza peticion a Firebase y trae los productos que corresponden a los criterios de precio en oferta y categoria seleccionada ("placas de video - precio < 35000")
-    if (isChecked) {
-      const categoryFilter = query(
-        collection(db, "productos"),
-        where("price", "<", 35000),
-        where("categoryId", "==", "placas-de-video")
-      );
-      getDocs(categoryFilter)
-        .then((snapshots) => {
-          setItems(
-            snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-          );
-        })
-        .finally(() => setLoading(false));
-    }
-
-    // Se realiza peticion a Firebase y trae los productos que corresponden a la categoria seleccionada.
     if (categoryId) {
       const categoryFilter = query(
         collection(db, "productos"),
@@ -100,11 +40,149 @@ export default function ItemsListContainer({
             setItems(
               snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
             );
+            if (data === "minorCategory") {
+              const itemsRef = query(
+                collection(db, "productos"),
+                where("categoryId", "==", categoryId),
+                orderBy("price", "asc")
+              );
+              getDocs(itemsRef)
+                .then((snapshots) => {
+                  setItems(
+                    snapshots.docs.map((doc) => ({
+                      id: doc.id,
+                      ...doc.data(),
+                    }))
+                  );
+                })
+                .finally(() => setLoading(false));
+            } else if (data === "mayorCategory") {
+              const itemsRef = query(
+                collection(db, "productos"),
+                where("categoryId", "==", categoryId),
+                orderBy("price", "desc")
+              );
+              getDocs(itemsRef)
+                .then((snapshots) => {
+                  setItems(
+                    snapshots.docs.map((doc) => ({
+                      id: doc.id,
+                      ...doc.data(),
+                    }))
+                  );
+                })
+                .finally(() => setLoading(false));
+            }
           }
         })
         .finally(() => setLoading(false));
+    } else {
+      switch (data) {
+        case "placas": {
+          const categoryFilter = query(
+            collection(db, "productos"),
+            where("price", "<", 35000),
+            where("categoryId", "==", "placas-de-video")
+          );
+          getDocs(categoryFilter)
+            .then((snapshots) => {
+              setItems(
+                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+              );
+            })
+            .finally(() => setLoading(false));
+          break;
+        }
+        case "procesadores": {
+          const categoryFilter = query(
+            collection(db, "productos"),
+            where("price", "<", 8000),
+            where("categoryId", "==", "procesadores")
+          );
+          getDocs(categoryFilter)
+            .then((snapshots) => {
+              setItems(
+                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+              );
+            })
+            .finally(() => setLoading(false));
+          break;
+        }
+        case "discos": {
+          const categoryFilter = query(
+            collection(db, "productos"),
+            where("price", "<", 3500),
+            where("categoryId", "==", "discos-ssd")
+          );
+          getDocs(categoryFilter)
+            .then((snapshots) => {
+              setItems(
+                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+              );
+            })
+            .finally(() => setLoading(false));
+          break;
+        }
+        case "minor": {
+          const itemsRef = query(
+            collection(db, "productos"),
+            orderBy("price", "asc")
+          );
+          getDocs(itemsRef)
+            .then((snapshots) => {
+              setItems(
+                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+              );
+            })
+            .finally(() => setLoading(false));
+          break;
+        }
+        case "mayor": {
+          const itemsRef = query(
+            collection(db, "productos"),
+            orderBy("price", "desc")
+          );
+          getDocs(itemsRef)
+            .then((snapshots) => {
+              setItems(
+                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+              );
+            })
+            .finally(() => setLoading(false));
+          break;
+        }
+        case "minorCategory": {
+          const itemsRef = query(
+            collection(db, "productos"),
+            where("categoryId", "==", categoryId),
+            orderBy("price", "asc")
+          );
+          getDocs(itemsRef)
+            .then((snapshots) => {
+              setItems(
+                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+              );
+            })
+            .finally(() => setLoading(false));
+          break;
+        }
+        default: {
+          const itemsRef = collection(db, "productos");
+          getDocs(itemsRef)
+            .then((snapshots) => {
+              setItems(
+                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+              );
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+            .finally(() => setLoading(false));
+          break;
+        }
+      }
     }
-  }, [categoryId, isChecked, isCheckedProcesadores, isCheckedDiscos]);
+  }, [categoryId, isChecked, isCheckedProcesadores, isCheckedDiscos, data]);
 
   return (
     <>

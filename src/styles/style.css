@@ -802,6 +802,7 @@
   color: #0077f9;
   border: 2px solid #0077f9;
   height: 40px;
+  margin-bottom: 10px;
 }
 
 #btnPriceFilter:hover {
@@ -824,6 +825,7 @@
   font-size: 18px;
   color: gray;
   padding-bottom: 10px;
+  margin-top: 90px;
 }
 
 .goData {

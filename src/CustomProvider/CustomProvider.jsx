@@ -7,6 +7,7 @@ const { Provider } = contexto;
 
 const CustomProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [data, setData] = useState("");
   const [buttonDecreaseActive, setButtonDecreaseActive] = useState(false);
   const [buttonAddActive, setButtonAddActive] = useState(false);
   const [activeAddToCartButton, setActiveAddToCartButton] = useState(0);
@@ -150,6 +151,8 @@ const CustomProvider = ({ children }) => {
     addedToCart: addedToCart,
     setAddedToCart: setAddedToCart,
     buyProduct: buyProduct,
+    data: data,
+    setData: setData,
   };
 
   return <Provider value={valueContext}>{children}</Provider>;
