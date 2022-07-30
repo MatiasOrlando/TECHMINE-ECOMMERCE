@@ -15,7 +15,7 @@ export default function ItemsListContainer({
   title,
   title2,
   categoryId,
-  isChecked,
+  isCheckedPlacas,
   isCheckedProcesadores,
   isCheckedDiscos,
   data,
@@ -86,9 +86,22 @@ export default function ItemsListContainer({
           );
           getDocs(categoryFilter)
             .then((snapshots) => {
-              setItems(
-                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-              );
+              if (items.length === 14) {
+                setItems([
+                  ...snapshots.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                  })),
+                ]);
+              } else {
+                setItems([
+                  ...items,
+                  ...snapshots.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                  })),
+                ]);
+              }
             })
             .finally(() => setLoading(false));
           break;
@@ -101,9 +114,22 @@ export default function ItemsListContainer({
           );
           getDocs(categoryFilter)
             .then((snapshots) => {
-              setItems(
-                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-              );
+              if (items.length === 14) {
+                setItems([
+                  ...snapshots.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                  })),
+                ]);
+              } else {
+                setItems([
+                  ...items,
+                  ...snapshots.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                  })),
+                ]);
+              }
             })
             .finally(() => setLoading(false));
           break;
@@ -116,9 +142,22 @@ export default function ItemsListContainer({
           );
           getDocs(categoryFilter)
             .then((snapshots) => {
-              setItems(
-                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-              );
+              if (items.length === 14) {
+                setItems([
+                  ...snapshots.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                  })),
+                ]);
+              } else {
+                setItems([
+                  ...items,
+                  ...snapshots.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                  })),
+                ]);
+              }
             })
             .finally(() => setLoading(false));
           break;
@@ -151,27 +190,15 @@ export default function ItemsListContainer({
             .finally(() => setLoading(false));
           break;
         }
-        case "minorCategory": {
-          const itemsRef = query(
-            collection(db, "productos"),
-            where("categoryId", "==", categoryId),
-            orderBy("price", "asc")
-          );
-          getDocs(itemsRef)
-            .then((snapshots) => {
-              setItems(
-                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-              );
-            })
-            .finally(() => setLoading(false));
-          break;
-        }
         default: {
           const itemsRef = collection(db, "productos");
           getDocs(itemsRef)
             .then((snapshots) => {
               setItems(
-                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+                snapshots.docs.map((doc) => ({
+                  id: doc.id,
+                  ...doc.data(),
+                }))
               );
             })
             .catch((error) => {
@@ -182,7 +209,13 @@ export default function ItemsListContainer({
         }
       }
     }
-  }, [categoryId, isChecked, isCheckedProcesadores, isCheckedDiscos, data]);
+  }, [
+    categoryId,
+    isCheckedPlacas,
+    isCheckedProcesadores,
+    isCheckedDiscos,
+    data,
+  ]);
 
   return (
     <>
