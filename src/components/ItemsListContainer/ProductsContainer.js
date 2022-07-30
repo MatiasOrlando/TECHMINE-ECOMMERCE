@@ -217,6 +217,7 @@ export default function ItemsListContainer({
     data,
   ]);
 
+  console.log(items);
   return (
     <>
       <div className="orderPriceFilter">

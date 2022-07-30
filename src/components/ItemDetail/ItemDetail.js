@@ -205,6 +205,7 @@ const ItemDetail = ({ detailProduct }) => {
                 variant="primary"
                 onClick={() => buyProduct(detailProduct, count)}
                 style={{ height: "38px" }}
+                disabled={noStock ? true : false}
               >
                 {" "}
                 Comprar
