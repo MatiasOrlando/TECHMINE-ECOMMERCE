@@ -23,201 +23,170 @@ export default function ItemsListContainer({
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
   const navigateTo404 = useNavigate();
+  const db = getFirestore();
+  const itemsRef = collection(db, "productos");
 
-  useEffect(() => {
+  async function getAllItems() {
+    const snapshots = await getDocs(itemsRef);
+    return snapshots.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+  }
+
+  async function getPlacas() {
+    let categoryFilter = query(
+      collection(db, "productos"),
+      where("price", "<", 35000),
+      where("categoryId", "==", "placas-de-video")
+    );
+    const snapshots = await getDocs(categoryFilter);
+    return [
+      ...snapshots.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })),
+    ];
+  }
+
+  async function getProcesadores() {
+    let categoryFilter = query(
+      collection(db, "productos"),
+      where("price", "<", 8000),
+      where("categoryId", "==", "procesadores")
+    );
+    const snapshots = await getDocs(categoryFilter);
+    return [
+      ...snapshots.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })),
+    ];
+  }
+
+  async function getAllSSD() {
+    let categoryFilter = query(
+      collection(db, "productos"),
+      where("price", "<", 3500),
+      where("categoryId", "==", "discos-ssd")
+    );
+    const snapshots = await getDocs(categoryFilter);
+    return [
+      ...snapshots.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })),
+    ];
+  }
+
+  async function queryfilter() {
     setLoading(true);
-    const db = getFirestore();
-    if (categoryId) {
-      const categoryFilter = query(
-        collection(db, "productos"),
-        where("categoryId", "==", categoryId)
-      );
-      getDocs(categoryFilter)
-        .then((snapshots) => {
-          if (snapshots.docs.length === 0) {
-            navigateTo404("/404");
-          } else {
-            setItems(
-              snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-            );
-            if (data === "minorCategory") {
-              const itemsRef = query(
-                collection(db, "productos"),
-                where("categoryId", "==", categoryId),
-                orderBy("price", "asc")
-              );
-              getDocs(itemsRef)
-                .then((snapshots) => {
-                  setItems(
-                    snapshots.docs.map((doc) => ({
-                      id: doc.id,
-                      ...doc.data(),
-                    }))
-                  );
-                })
-                .finally(() => setLoading(false));
-            } else if (data === "mayorCategory") {
-              const itemsRef = query(
-                collection(db, "productos"),
-                where("categoryId", "==", categoryId),
-                orderBy("price", "desc")
-              );
-              getDocs(itemsRef)
-                .then((snapshots) => {
-                  setItems(
-                    snapshots.docs.map((doc) => ({
-                      id: doc.id,
-                      ...doc.data(),
-                    }))
-                  );
-                })
-                .finally(() => setLoading(false));
-            }
-          }
-        })
-        .finally(() => setLoading(false));
-    } else {
+    let filteredItems = [];
+    if (
+      !isCheckedPlacas &&
+      !isCheckedProcesadores &&
+      !isCheckedDiscos &&
+      !categoryId
+    ) {
+      filteredItems = await getAllItems();
+      setItems(orderItems(filteredItems));
+      setLoading(false);
+      return;
+    }
+
+    if (isCheckedPlacas) {
+      let placas = await getPlacas();
+      filteredItems = filteredItems.concat(placas);
+    }
+    if (isCheckedProcesadores) {
+      let procesadores = await getProcesadores();
+      filteredItems = filteredItems.concat(procesadores);
+    }
+    if (isCheckedDiscos) {
+      let discos = await getAllSSD();
+      filteredItems = filteredItems.concat(discos);
+    }
+
+    function orderItems(itemsList) {
       switch (data) {
-        case "placas": {
-          const categoryFilter = query(
-            collection(db, "productos"),
-            where("price", "<", 35000),
-            where("categoryId", "==", "placas-de-video")
-          );
-          getDocs(categoryFilter)
-            .then((snapshots) => {
-              if (items.length === 14) {
-                setItems([
-                  ...snapshots.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                  })),
-                ]);
-              } else {
-                setItems([
-                  ...items,
-                  ...snapshots.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                  })),
-                ]);
-              }
-            })
-            .finally(() => setLoading(false));
-          break;
-        }
-        case "procesadores": {
-          const categoryFilter = query(
-            collection(db, "productos"),
-            where("price", "<", 8000),
-            where("categoryId", "==", "procesadores")
-          );
-          getDocs(categoryFilter)
-            .then((snapshots) => {
-              if (items.length === 14) {
-                setItems([
-                  ...snapshots.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                  })),
-                ]);
-              } else {
-                setItems([
-                  ...items,
-                  ...snapshots.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                  })),
-                ]);
-              }
-            })
-            .finally(() => setLoading(false));
-          break;
-        }
-        case "discos": {
-          const categoryFilter = query(
-            collection(db, "productos"),
-            where("price", "<", 3500),
-            where("categoryId", "==", "discos-ssd")
-          );
-          getDocs(categoryFilter)
-            .then((snapshots) => {
-              if (items.length === 14) {
-                setItems([
-                  ...snapshots.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                  })),
-                ]);
-              } else {
-                setItems([
-                  ...items,
-                  ...snapshots.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                  })),
-                ]);
-              }
-            })
-            .finally(() => setLoading(false));
-          break;
-        }
-        case "minor": {
-          const itemsRef = query(
-            collection(db, "productos"),
-            orderBy("price", "asc")
-          );
-          getDocs(itemsRef)
-            .then((snapshots) => {
-              setItems(
-                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-              );
-            })
-            .finally(() => setLoading(false));
-          break;
-        }
-        case "mayor": {
-          const itemsRef = query(
-            collection(db, "productos"),
-            orderBy("price", "desc")
-          );
-          getDocs(itemsRef)
-            .then((snapshots) => {
-              setItems(
-                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-              );
-            })
-            .finally(() => setLoading(false));
-          break;
-        }
-        default: {
-          const itemsRef = collection(db, "productos");
-          getDocs(itemsRef)
-            .then((snapshots) => {
-              setItems(
-                snapshots.docs.map((doc) => ({
-                  id: doc.id,
-                  ...doc.data(),
-                }))
-              );
-            })
-            .catch((error) => {
-              console.log(error);
-            })
-            .finally(() => setLoading(false));
-          break;
-        }
+        case "normal":
+        default:
+          return itemsList;
+        case "mayor":
+          return itemsList.sort((a, b) => b.price - a.price);
+        case "minor":
+          return itemsList.sort((a, b) => a.price - b.price);
       }
     }
+    setLoading(false);
+    setItems(orderItems(filteredItems));
+  }
+
+  useEffect(() => {
+    async function renderProductsFilter() {
+      setLoading(true);
+      if (categoryId) {
+        const categoryFilter = query(
+          collection(db, "productos"),
+          where("categoryId", "==", categoryId)
+        );
+        getDocs(categoryFilter)
+          .then((snapshots) => {
+            if (snapshots.docs.length === 0) {
+              navigateTo404("/404");
+            } else {
+              setItems(
+                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+              );
+              if (data === "minorCategory") {
+                const itemsRef = query(
+                  collection(db, "productos"),
+                  where("categoryId", "==", categoryId),
+                  orderBy("price", "asc")
+                );
+                getDocs(itemsRef)
+                  .then((snapshots) => {
+                    setItems(
+                      snapshots.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data(),
+                      }))
+                    );
+                  })
+                  .finally(() => setLoading(false));
+              } else if (data === "mayorCategory") {
+                const itemsRef = query(
+                  collection(db, "productos"),
+                  where("categoryId", "==", categoryId),
+                  orderBy("price", "desc")
+                );
+                getDocs(itemsRef)
+                  .then((snapshots) => {
+                    setItems(
+                      snapshots.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data(),
+                      }))
+                    );
+                  })
+                  .finally(() => setLoading(false));
+              }
+            }
+          })
+          .finally(() => setLoading(false));
+      } else {
+        queryfilter();
+      }
+    }
+    renderProductsFilter();
   }, [
-    categoryId,
     isCheckedPlacas,
     isCheckedProcesadores,
     isCheckedDiscos,
     data,
+    categoryId,
   ]);
 
-  console.log(items);
   return (
     <>
       <div className="orderPriceFilter">

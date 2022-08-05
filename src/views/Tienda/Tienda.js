@@ -6,14 +6,14 @@ import { contexto } from "../../CustomProvider/CustomProvider";
 
 export default function Tienda() {
   const { data, setData } = useContext(contexto);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isCheckedPlacas, setIsCheckedPlacas] = useState(false);
   const [isCheckedProcesadores, setIsCheckedProcesadores] = useState(false);
   const [isCheckedDiscos, setIsCheckedDiscos] = useState(false);
 
   const handleCheck = () => {
     setData("placas");
-    setIsChecked(!isChecked);
-    if (isChecked) {
+    setIsCheckedPlacas(!isCheckedPlacas);
+    if (isCheckedPlacas) {
       setData("default");
     }
   };
@@ -65,7 +65,7 @@ export default function Tienda() {
               Mayor precio
             </button>
             <button
-              onClick={() => setData("default")}
+              onClick={() => setData("normal")}
               className="btn btn-outline"
               id="btnPriceFilter"
             >
@@ -79,7 +79,7 @@ export default function Tienda() {
                 <input
                   type={"checkbox"}
                   name="placas"
-                  value={isChecked}
+                  value={isCheckedPlacas}
                   onChange={handleCheck}
                 />
                 <label htmlFor="checkbox">Placas de Vídeo </label>
@@ -108,9 +108,8 @@ export default function Tienda() {
         <div className="tiendaProductos">
           <ItemsListContainer
             title="Nuestros productos "
-            isChecked={isChecked}
+            isCheckedPlacas={isCheckedPlacas}
             isCheckedProcesadores={isCheckedProcesadores}
-            setIsChecked={setIsChecked}
             isCheckedDiscos={isCheckedDiscos}
             data={data}
           />

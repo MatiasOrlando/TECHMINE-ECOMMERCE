@@ -29,6 +29,7 @@ function NavBar() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
   const [noResults, setNoResults] = useState(false);
+  const [searchResults, setSearchResults] = useState(false);
 
   useEffect(() => {
     const db = getFirestore();
@@ -110,6 +111,7 @@ function NavBar() {
                     placeholder="¿Qué estas buscando?"
                     className="me-2"
                     aria-label="Search"
+                    value={value}
                     onChange={(e) => {
                       if (e.target.value === "") {
                         setValue("");
@@ -117,6 +119,7 @@ function NavBar() {
                         setNoResults(false);
                       } else {
                         setValue(e.target.value);
+                        setSearchResults(false);
                       }
                     }}
                   />
@@ -136,7 +139,12 @@ function NavBar() {
                 <div
                   className="dropdown1"
                   style={{
-                    display: noResults && value.length >= 1 ? "flex" : "none",
+                    display:
+                      (!searchResults &&
+                        noResults &&
+                        value.length >= 1 &&
+                        "flex") ||
+                      "none",
                   }}
                 >
                   {/* Si hay coincidencias en la peticion */}
@@ -145,6 +153,8 @@ function NavBar() {
                         <div
                           onClick={() => {
                             navegarAProducto(`product/${product.id}`);
+                            setValue(product.title);
+                            setSearchResults(true);
                           }}
                           className="dropdown-row"
                           key={product.id}
