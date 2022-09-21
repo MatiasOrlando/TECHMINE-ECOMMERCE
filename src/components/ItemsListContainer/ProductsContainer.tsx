@@ -10,8 +10,9 @@ import {
   where,
   orderBy,
 } from "firebase/firestore";
+import { ItemsListProps, Item } from "./ProductsContainer.interface";
 
-export default function ItemsListContainer({
+const ItemsListContainer: React.FC<ItemsListProps> = ({
   title,
   title2,
   categoryId,
@@ -19,22 +20,22 @@ export default function ItemsListContainer({
   isCheckedProcesadores,
   isCheckedDiscos,
   data,
-}) {
-  const [loading, setLoading] = useState(false);
-  const [items, setItems] = useState([]);
+}: ItemsListProps) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [items, setItems] = useState<Item[]>([]);
   const navigateTo404 = useNavigate();
   const db = getFirestore();
   const itemsRef = collection(db, "productos");
 
-  async function getAllItems() {
+  async function getAllItems(): Promise<Item[]> {
     const snapshots = await getDocs(itemsRef);
-    return snapshots.docs.map((doc) => ({
+    return snapshots.docs.map((doc: any) => ({
       id: doc.id,
       ...doc.data(),
     }));
   }
 
-  async function getPlacas() {
+  async function getPlacas(): Promise<Item[]> {
     let categoryFilter = query(
       collection(db, "productos"),
       where("price", "<", 35000),
@@ -42,14 +43,14 @@ export default function ItemsListContainer({
     );
     const snapshots = await getDocs(categoryFilter);
     return [
-      ...snapshots.docs.map((doc) => ({
+      ...snapshots.docs.map((doc: any) => ({
         id: doc.id,
         ...doc.data(),
       })),
     ];
   }
 
-  async function getProcesadores() {
+  async function getProcesadores(): Promise<Item[]> {
     let categoryFilter = query(
       collection(db, "productos"),
       where("price", "<", 8000),
@@ -57,14 +58,14 @@ export default function ItemsListContainer({
     );
     const snapshots = await getDocs(categoryFilter);
     return [
-      ...snapshots.docs.map((doc) => ({
+      ...snapshots.docs.map((doc: any) => ({
         id: doc.id,
         ...doc.data(),
       })),
     ];
   }
 
-  async function getAllSSD() {
+  async function getAllSSD(): Promise<Item[]> {
     let categoryFilter = query(
       collection(db, "productos"),
       where("price", "<", 3500),
@@ -72,16 +73,16 @@ export default function ItemsListContainer({
     );
     const snapshots = await getDocs(categoryFilter);
     return [
-      ...snapshots.docs.map((doc) => ({
+      ...snapshots.docs.map((doc: any) => ({
         id: doc.id,
         ...doc.data(),
       })),
     ];
   }
 
-  async function queryFilter() {
+  async function queryFilter(): Promise<void> {
     setLoading(true);
-    let filteredItems = [];
+    let filteredItems: Item[] = [];
     if (
       !isCheckedPlacas &&
       !isCheckedProcesadores &&
@@ -107,7 +108,7 @@ export default function ItemsListContainer({
       filteredItems = filteredItems.concat(discos);
     }
 
-    function orderItems(itemsList) {
+    function orderItems(itemsList: Item[]): Item[] {
       switch (data) {
         case "normal":
         default:
@@ -123,7 +124,7 @@ export default function ItemsListContainer({
   }
 
   useEffect(() => {
-    async function renderProductsFilter() {
+    async function renderProductsFilter(): Promise<void> {
       setLoading(true);
       if (categoryId) {
         const categoryFilter = query(
@@ -131,7 +132,7 @@ export default function ItemsListContainer({
           where("categoryId", "==", categoryId)
         );
         getDocs(categoryFilter)
-          .then((snapshots) => {
+          .then((snapshots: any) => {
             if (snapshots.docs.length === 0) {
               navigateTo404("/404");
             } else {
@@ -145,7 +146,7 @@ export default function ItemsListContainer({
                   orderBy("price", "asc")
                 );
                 getDocs(itemsRef)
-                  .then((snapshots) => {
+                  .then((snapshots: any) => {
                     setItems(
                       snapshots.docs.map((doc) => ({
                         id: doc.id,
@@ -161,7 +162,7 @@ export default function ItemsListContainer({
                   orderBy("price", "desc")
                 );
                 getDocs(itemsRef)
-                  .then((snapshots) => {
+                  .then((snapshots: any) => {
                     setItems(
                       snapshots.docs.map((doc) => ({
                         id: doc.id,
@@ -200,4 +201,6 @@ export default function ItemsListContainer({
       </div>
     </>
   );
-}
+};
+
+export default ItemsListContainer;
