@@ -79,7 +79,7 @@ export default function ItemsListContainer({
     ];
   }
 
-  async function queryfilter() {
+  async function queryFilter() {
     setLoading(true);
     let filteredItems = [];
     if (
@@ -175,7 +175,7 @@ export default function ItemsListContainer({
           })
           .finally(() => setLoading(false));
       } else {
-        queryfilter();
+        queryFilter();
       }
     }
     renderProductsFilter();
@@ -185,6 +185,7 @@ export default function ItemsListContainer({
     isCheckedDiscos,
     data,
     categoryId,
+    navigateTo404,
   ]);
 
   return (

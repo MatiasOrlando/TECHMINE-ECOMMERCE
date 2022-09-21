@@ -78,7 +78,7 @@ const Checkout = () => {
       await runTransaction(db, async (transaction) => {
         const prod = await transaction.get(prodRef);
         if (!prod.exists()) {
-          swal("Producto no existe");
+          console.error("Producto no existe");
         }
         const newStock = prod.data().stock - product.quantity;
         transaction.update(prodRef, { stock: newStock });
