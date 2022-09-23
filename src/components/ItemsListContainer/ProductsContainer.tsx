@@ -23,17 +23,18 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
 }: ItemsListProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [items, setItems] = useState<Item[]>([]);
+  const [awaitedItemsList, setAwaitedItemsList] = useState<Item[]>([]);
   const navigateTo404 = useNavigate();
   const db = getFirestore();
   const itemsRef = collection(db, "productos");
 
-  async function getAllItems(): Promise<Item[]> {
+  const getAllItems = async (): Promise<Item[]> => {
     const snapshots = await getDocs(itemsRef);
     return snapshots.docs.map((doc: any) => ({
       id: doc.id,
       ...doc.data(),
     }));
-  }
+  };
 
   async function getPlacas(): Promise<Item[]> {
     let categoryFilter = query(
@@ -80,52 +81,58 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
     ];
   }
 
-  async function queryFilter(): Promise<void> {
-    setLoading(true);
-    let filteredItems: Item[] = [];
-    if (
-      !isCheckedPlacas &&
-      !isCheckedProcesadores &&
-      !isCheckedDiscos &&
-      !categoryId
-    ) {
-      filteredItems = await getAllItems();
-      setItems(orderItems(filteredItems));
-      setLoading(false);
-      return;
-    }
-
-    if (isCheckedPlacas) {
-      let placas = await getPlacas();
-      filteredItems = filteredItems.concat(placas);
-    }
-    if (isCheckedProcesadores) {
-      let procesadores = await getProcesadores();
-      filteredItems = filteredItems.concat(procesadores);
-    }
-    if (isCheckedDiscos) {
-      let discos = await getAllSSD();
-      filteredItems = filteredItems.concat(discos);
-    }
-
-    function orderItems(itemsList: Item[]): Item[] {
-      switch (data) {
-        case "normal":
-        default:
-          return itemsList;
-        case "mayor":
-          return itemsList.sort((a, b) => b.price - a.price);
-        case "minor":
-          return itemsList.sort((a, b) => a.price - b.price);
-      }
-    }
-    setLoading(false);
-    setItems(orderItems(filteredItems));
-  }
+  useEffect(() => {
+    (async () => {
+      const itemsList: Item[] = await getAllItems();
+      setAwaitedItemsList(itemsList);
+    })();
+  }, [data]);
 
   useEffect(() => {
-    async function renderProductsFilter(): Promise<void> {
+    (async () => {
+      if (data === "normal") {
+        setAwaitedItemsList(awaitedItemsList);
+      } else if (data === "mayor") {
+        const newList = awaitedItemsList.sort((a, b) => b.price - a.price);
+        setAwaitedItemsList(newList);
+      } else if (data === "minor") {
+        setAwaitedItemsList(awaitedItemsList.sort((a, b) => a.price - b.price));
+      }
+      setLoading(false);
+      setItems(awaitedItemsList);
+    })();
+  }, [data, awaitedItemsList]);
+
+  useEffect(() => {
+    async function queryFilter(): Promise<void> {
       setLoading(true);
+
+      if (isCheckedPlacas) {
+        const placasSale = await getPlacas();
+        setAwaitedItemsList(placasSale);
+      }
+      if (isCheckedProcesadores) {
+        const procesadoresSale = await getProcesadores();
+        setAwaitedItemsList(procesadoresSale);
+      }
+      if (isCheckedDiscos) {
+        const discosSale = await getAllSSD();
+        setAwaitedItemsList(discosSale);
+      }
+
+      if (
+        !isCheckedPlacas &&
+        !isCheckedProcesadores &&
+        !isCheckedDiscos &&
+        !categoryId
+      ) {
+        setItems(awaitedItemsList);
+        setLoading(false);
+        return;
+      }
+    }
+
+    async function renderProductsFilter(): Promise<void> {
       if (categoryId) {
         const categoryFilter = query(
           collection(db, "productos"),
@@ -136,8 +143,11 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
             if (snapshots.docs.length === 0) {
               navigateTo404("/404");
             } else {
-              setItems(
-                snapshots.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+              setAwaitedItemsList(
+                snapshots.docs.map((doc: { id: any; data: () => any }) => ({
+                  id: doc.id,
+                  ...doc.data(),
+                }))
               );
               if (data === "minorCategory") {
                 const itemsRef = query(
@@ -147,11 +157,13 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
                 );
                 getDocs(itemsRef)
                   .then((snapshots: any) => {
-                    setItems(
-                      snapshots.docs.map((doc) => ({
-                        id: doc.id,
-                        ...doc.data(),
-                      }))
+                    setAwaitedItemsList(
+                      snapshots.docs.map(
+                        (doc: { id: any; data: () => any }) => ({
+                          id: doc.id,
+                          ...doc.data(),
+                        })
+                      )
                     );
                   })
                   .finally(() => setLoading(false));
@@ -163,11 +175,13 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
                 );
                 getDocs(itemsRef)
                   .then((snapshots: any) => {
-                    setItems(
-                      snapshots.docs.map((doc) => ({
-                        id: doc.id,
-                        ...doc.data(),
-                      }))
+                    setAwaitedItemsList(
+                      snapshots.docs.map(
+                        (doc: { id: any; data: () => any }) => ({
+                          id: doc.id,
+                          ...doc.data(),
+                        })
+                      )
                     );
                   })
                   .finally(() => setLoading(false));
@@ -187,6 +201,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
     data,
     categoryId,
     navigateTo404,
+    db,
   ]);
 
   return (

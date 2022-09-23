@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ItemsListContainer from "../../components/ItemsListContainer/ProductsContainer";
+import ItemsListContainer from "../../components/ItemsListContainer/ProductsContainer.tsx";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import SwiperTest from "../../components/SwiperTest/SwiperTest";

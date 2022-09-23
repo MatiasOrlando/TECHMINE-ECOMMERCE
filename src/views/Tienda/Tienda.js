@@ -1,4 +1,4 @@
-import ItemsListContainer from "../../components/ItemsListContainer/ProductsContainer";
+import ItemsListContainer from "../../components/ItemsListContainer/ProductsContainer.tsx";
 import { NavLink } from "react-router-dom";
 import { useState, useContext } from "react";
 import SwiperTest from "../../components/SwiperTest/SwiperTest";
