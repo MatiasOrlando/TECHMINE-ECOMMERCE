@@ -92,7 +92,6 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
       switch (data) {
         case "normal":
         case "default": {
-          setProductsList(productsList);
           break;
         }
         case "mayor": {
@@ -104,8 +103,8 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
           break;
         }
       }
-      setLoading(false);
       setItems(productsList);
+      setLoading(false);
     })();
   }, [data, productsList, selectedProducts]);
 
@@ -116,8 +115,6 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
         setProductsList(productsList);
         setLoading(false);
       } else {
-        // console.log(checkedState);
-        // console.log(selectedProducts);
         const checkboxSelection: Item[] = [];
         if (selectedProducts.includes("Placas de video")) {
           const placasSale = await getPlacas();
@@ -137,12 +134,28 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
     }
 
     async function renderProductsFilter(): Promise<void> {
+      setLoading(true);
       if (categoryId) {
-        const categoryFilter = query(
-          collection(db, "productos"),
-          where("categoryId", "==", categoryId)
-        );
-        getDocs(categoryFilter)
+        let itemsRef: any; //type Query<DocumentData>?
+        if (data === "minorCategory") {
+          itemsRef = query(
+            collection(db, "productos"),
+            where("categoryId", "==", categoryId),
+            orderBy("price", "asc")
+          );
+        } else if (data === "mayorCategory") {
+          itemsRef = query(
+            collection(db, "productos"),
+            where("categoryId", "==", categoryId),
+            orderBy("price", "desc")
+          );
+        } else {
+          itemsRef = query(
+            collection(db, "productos"),
+            where("categoryId", "==", categoryId)
+          );
+        }
+        getDocs(itemsRef)
           .then((snapshots: any) => {
             if (snapshots.docs.length === 0) {
               navigateTo404("/404");
@@ -153,43 +166,6 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
                   ...doc.data(),
                 }))
               );
-              if (data === "minorCategory") {
-                const itemsRef = query(
-                  collection(db, "productos"),
-                  where("categoryId", "==", categoryId),
-                  orderBy("price", "asc")
-                );
-                getDocs(itemsRef)
-                  .then((snapshots: any) => {
-                    setProductsList(
-                      snapshots.docs.map(
-                        (doc: { id: any; data: () => any }) => ({
-                          id: doc.id,
-                          ...doc.data(),
-                        })
-                      )
-                    );
-                  })
-                  .finally(() => setLoading(false));
-              } else if (data === "mayorCategory") {
-                const itemsRef = query(
-                  collection(db, "productos"),
-                  where("categoryId", "==", categoryId),
-                  orderBy("price", "desc")
-                );
-                getDocs(itemsRef)
-                  .then((snapshots: any) => {
-                    setProductsList(
-                      snapshots.docs.map(
-                        (doc: { id: any; data: () => any }) => ({
-                          id: doc.id,
-                          ...doc.data(),
-                        })
-                      )
-                    );
-                  })
-                  .finally(() => setLoading(false));
-              }
             }
           })
           .finally(() => setLoading(false));
@@ -198,7 +174,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
       }
     }
     renderProductsFilter();
-  }, [data, categoryId, navigateTo404, db, checkedState, selectedProducts]);
+  }, [data, categoryId, checkedState, selectedProducts]);
 
   return (
     <>
