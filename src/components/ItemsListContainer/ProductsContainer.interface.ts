@@ -15,8 +15,7 @@ export interface ItemsListProps {
   title: string;
   title2: string;
   categoryId: string;
-  isCheckedPlacas: boolean;
-  isCheckedProcesadores: boolean;
-  isCheckedDiscos: boolean;
   data: string;
+  checkedState: boolean[];
+  selectedProducts: string[];
 }

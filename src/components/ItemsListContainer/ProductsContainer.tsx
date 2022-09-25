@@ -16,14 +16,13 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
   title,
   title2,
   categoryId,
-  isCheckedPlacas,
-  isCheckedProcesadores,
-  isCheckedDiscos,
   data,
+  checkedState,
+  selectedProducts,
 }: ItemsListProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [items, setItems] = useState<Item[]>([]);
-  const [awaitedItemsList, setAwaitedItemsList] = useState<Item[]>([]);
+  const [productsList, setProductsList] = useState<Item[]>([]);
   const navigateTo404 = useNavigate();
   const db = getFirestore();
   const itemsRef = collection(db, "productos");
@@ -37,7 +36,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
   };
 
   async function getPlacas(): Promise<Item[]> {
-    let categoryFilter = query(
+    const categoryFilter = query(
       collection(db, "productos"),
       where("price", "<", 35000),
       where("categoryId", "==", "placas-de-video")
@@ -52,7 +51,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
   }
 
   async function getProcesadores(): Promise<Item[]> {
-    let categoryFilter = query(
+    const categoryFilter = query(
       collection(db, "productos"),
       where("price", "<", 8000),
       where("categoryId", "==", "procesadores")
@@ -67,7 +66,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
   }
 
   async function getAllSSD(): Promise<Item[]> {
-    let categoryFilter = query(
+    const categoryFilter = query(
       collection(db, "productos"),
       where("price", "<", 3500),
       where("categoryId", "==", "discos-ssd")
@@ -83,52 +82,57 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
 
   useEffect(() => {
     (async () => {
-      const itemsList: Item[] = await getAllItems();
-      setAwaitedItemsList(itemsList);
+      const allProducts: Item[] = await getAllItems();
+      setProductsList(allProducts);
     })();
-  }, [data]);
+  }, [data, selectedProducts]);
 
   useEffect(() => {
     (async () => {
-      if (data === "normal") {
-        setAwaitedItemsList(awaitedItemsList);
-      } else if (data === "mayor") {
-        const newList = awaitedItemsList.sort((a, b) => b.price - a.price);
-        setAwaitedItemsList(newList);
-      } else if (data === "minor") {
-        setAwaitedItemsList(awaitedItemsList.sort((a, b) => a.price - b.price));
+      switch (data) {
+        case "normal":
+        case "default": {
+          setProductsList(productsList);
+          break;
+        }
+        case "mayor": {
+          setProductsList(productsList.sort((a, b) => b.price - a.price));
+          break;
+        }
+        case "minor": {
+          setProductsList(productsList.sort((a, b) => a.price - b.price));
+          break;
+        }
       }
       setLoading(false);
-      setItems(awaitedItemsList);
+      setItems(productsList);
     })();
-  }, [data, awaitedItemsList]);
+  }, [data, productsList, selectedProducts]);
 
   useEffect(() => {
     async function queryFilter(): Promise<void> {
       setLoading(true);
-
-      if (isCheckedPlacas) {
-        const placasSale = await getPlacas();
-        setAwaitedItemsList(placasSale);
-      }
-      if (isCheckedProcesadores) {
-        const procesadoresSale = await getProcesadores();
-        setAwaitedItemsList(procesadoresSale);
-      }
-      if (isCheckedDiscos) {
-        const discosSale = await getAllSSD();
-        setAwaitedItemsList(discosSale);
-      }
-
-      if (
-        !isCheckedPlacas &&
-        !isCheckedProcesadores &&
-        !isCheckedDiscos &&
-        !categoryId
-      ) {
-        setItems(awaitedItemsList);
+      if (!selectedProducts && !categoryId) {
+        setProductsList(productsList);
         setLoading(false);
-        return;
+      } else {
+        // console.log(checkedState);
+        // console.log(selectedProducts);
+        const checkboxSelection: Item[] = [];
+        if (selectedProducts.includes("Placas de video")) {
+          const placasSale = await getPlacas();
+          checkboxSelection.push(...placasSale);
+        }
+        if (selectedProducts.includes("Procesadores")) {
+          const procesadoresSale = await getProcesadores();
+          checkboxSelection.push(...procesadoresSale);
+        }
+        if (selectedProducts.includes("Discos SSD")) {
+          const discosSale = await getAllSSD();
+          checkboxSelection.push(...discosSale);
+        }
+        setProductsList(checkboxSelection);
+        setLoading(false);
       }
     }
 
@@ -143,7 +147,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
             if (snapshots.docs.length === 0) {
               navigateTo404("/404");
             } else {
-              setAwaitedItemsList(
+              setProductsList(
                 snapshots.docs.map((doc: { id: any; data: () => any }) => ({
                   id: doc.id,
                   ...doc.data(),
@@ -157,7 +161,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
                 );
                 getDocs(itemsRef)
                   .then((snapshots: any) => {
-                    setAwaitedItemsList(
+                    setProductsList(
                       snapshots.docs.map(
                         (doc: { id: any; data: () => any }) => ({
                           id: doc.id,
@@ -175,7 +179,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
                 );
                 getDocs(itemsRef)
                   .then((snapshots: any) => {
-                    setAwaitedItemsList(
+                    setProductsList(
                       snapshots.docs.map(
                         (doc: { id: any; data: () => any }) => ({
                           id: doc.id,
@@ -194,15 +198,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
       }
     }
     renderProductsFilter();
-  }, [
-    isCheckedPlacas,
-    isCheckedProcesadores,
-    isCheckedDiscos,
-    data,
-    categoryId,
-    navigateTo404,
-    db,
-  ]);
+  }, [data, categoryId, navigateTo404, db, checkedState, selectedProducts]);
 
   return (
     <>
