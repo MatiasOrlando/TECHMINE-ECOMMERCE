@@ -10,7 +10,6 @@ import {
   where,
   orderBy,
   QueryDocumentSnapshot,
-  DocumentData,
 } from "firebase/firestore";
 import { ItemsListProps, Item } from "./ProductsContainer.interface";
 
