@@ -161,7 +161,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
               navigateTo404("/404");
             } else {
               setProductsList(
-                snapshots.docs.map((doc: { id: any; data: () => any }) => ({
+                snapshots.docs.map((doc: any) => ({
                   id: doc.id,
                   ...doc.data(),
                 }))
