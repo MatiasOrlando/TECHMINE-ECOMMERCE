@@ -9,6 +9,8 @@ import {
   collection,
   where,
   orderBy,
+  QueryDocumentSnapshot,
+  DocumentData,
 } from "firebase/firestore";
 import { ItemsListProps, Item } from "./ProductsContainer.interface";
 
@@ -29,7 +31,8 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
 
   const getAllItems = async (): Promise<Item[]> => {
     const snapshots = await getDocs(itemsRef);
-    return snapshots.docs.map((doc: any) => ({
+    return snapshots.docs.map((doc: QueryDocumentSnapshot<any>) => ({
+      //  QueryDocumentSnapshot<DocumentData?
       id: doc.id,
       ...doc.data(),
     }));
@@ -43,7 +46,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
     );
     const snapshots = await getDocs(categoryFilter);
     return [
-      ...snapshots.docs.map((doc: any) => ({
+      ...snapshots.docs.map((doc: QueryDocumentSnapshot<any>) => ({
         id: doc.id,
         ...doc.data(),
       })),
@@ -58,7 +61,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
     );
     const snapshots = await getDocs(categoryFilter);
     return [
-      ...snapshots.docs.map((doc: any) => ({
+      ...snapshots.docs.map((doc: QueryDocumentSnapshot<any>) => ({
         id: doc.id,
         ...doc.data(),
       })),
@@ -73,7 +76,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
     );
     const snapshots = await getDocs(categoryFilter);
     return [
-      ...snapshots.docs.map((doc: any) => ({
+      ...snapshots.docs.map((doc: QueryDocumentSnapshot<any>) => ({
         id: doc.id,
         ...doc.data(),
       })),
@@ -161,7 +164,7 @@ const ItemsListContainer: React.FC<ItemsListProps> = ({
               navigateTo404("/404");
             } else {
               setProductsList(
-                snapshots.docs.map((doc: any) => ({
+                snapshots.docs.map((doc: QueryDocumentSnapshot<any>) => ({
                   id: doc.id,
                   ...doc.data(),
                 }))
