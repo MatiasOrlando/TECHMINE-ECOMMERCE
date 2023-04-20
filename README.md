@@ -1,6 +1,6 @@
 # TECHMINE E-COMMERCE Web APP
 
-TECHMINE, es una aplicacion web e-commerce que le permite a sus usuarios poder acceder y comprar productos de alta calidad y rendimiento, utilizados mayoritariamente para la industria del minado de criptomonedas como tambien para la industria del gaming.
+TECHMINE is a web-based e-commerce application that enables users to access and purchase high-quality, high-performance products primarily used in the cryptocurrency mining and gaming industries.
 
 ## Demo
 
@@ -11,28 +11,25 @@ TECHMINE, es una aplicacion web e-commerce que le permite a sus usuarios poder a
 
 ## Deploy
 
-<p>Para poder visualizar y utilizar la app ingrese al siguiente <a href="https://proyectotechreact-orlando.vercel.app/">link</a>
+<p> Link  <a href="https://proyectotechreact-orlando.vercel.app/">link</a>
 
 ## Instalación 🔧
 
-Si desea correr este proyecto, simplemente clone este repositorio y ejecute npm install luego npm start en carpeta raiz.
-Abra [http://localhost:3000](http://localhost:3000) para verlo en su navegador.
+If you want to run this project, simply clone this repository and run npm install followed by npm start in the root folder. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
 <br>
 <br>
 
-## Tecnologías 🛠️
+## Tecnologies 🛠️
 
-Este proyecto fue realizado con las siguientes tecnologías y librerías:
+This project was developed using the following technologies and libraries:
 
 <ul>
-<li>React - Librería de Javascript</li>
+<li>React</li>
 <li>Boostrap - Front End CSS Framework</li>
-<li>Reactstrap - Librería de componentes React para Bootstrap.</li>
-<li>Toastify - Librería Pop-ups interactivos</li>
-<li>React Icons - Librería de Iconos</li>
-<li>React Router Dom - Librería de componentes de navegación React</li>
-<li>Sweet Alert - Libreria mensajes interactivos</li>
-<li>Swiper - Libreria touch slider</li>
+<li>Toastify - Pop-ups</li>
+<li>React Icons - Icons</li>
+<li>Sweet Alert - Interactive messages</li>
 </ul>
 
 <br>
