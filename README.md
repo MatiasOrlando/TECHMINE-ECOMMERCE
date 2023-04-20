@@ -16,7 +16,7 @@ TECHMINE is a web-based e-commerce application that enables users to access and 
 <br>
   
   
-## Instalación 🔧
+## Installation 🔧
 
 If you want to run this project, simply clone this repository and run npm install followed by npm start in the root folder. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
