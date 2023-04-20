@@ -1,4 +1,4 @@
-# TECHMINE E-COMMERCE Web APP
+# TECHMINE E-COMMERCE APP
 
 TECHMINE is a web-based e-commerce application that enables users to access and purchase high-quality, high-performance products primarily used in the cryptocurrency mining and gaming industries.
 
