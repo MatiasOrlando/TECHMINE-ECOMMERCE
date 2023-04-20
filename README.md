@@ -28,6 +28,7 @@ This project was developed using the following technologies and libraries:
 
 <ul>
 <li>React</li>
+<li>Firebase</li>
 <li>Boostrap - Front End CSS Framework</li>
 <li>Toastify - Pop-ups</li>
 <li>React Icons - Icons</li>
