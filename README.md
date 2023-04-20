@@ -11,8 +11,8 @@ TECHMINE is a web-based e-commerce application that enables users to access and 
 
 ## Deploy
 
-<p> Link  <a href="https://proyectotechreact-orlando.vercel.app/">link</a>
-
+<p> Link  <a href="https://proyectotechreact-orlando.vercel.app/">TECHMINE</a>
+<br>
 ## Instalación 🔧
 
 If you want to run this project, simply clone this repository and run npm install followed by npm start in the root folder. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
