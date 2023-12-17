@@ -172,7 +172,9 @@ function NavBar() {
                 </div>
               </div>
             </Form>
-            <CartWidget />
+            <div style={{ paddingRight: "0.6rem" }}>
+              <CartWidget />
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
