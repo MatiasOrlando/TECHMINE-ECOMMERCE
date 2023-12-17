@@ -20,18 +20,20 @@ export default function Item({ product }) {
                 </div>
                 <div>
                   <div className="info">
-                    <h3 className="titulosProductosLista">{product.title}</h3>
-                    <div className="price-mainLista">
-                      <span className="priceInfo">${product.price}</span>
-                      <span className="price-old">${product.oldprice}</span>
-                    </div>
-                    <div className="tags">
-                      <span className="tag tag-stock">
-                        Stock disponible: {product.stock}
-                      </span>
-                      <span className="tag tag-stock">
-                        Deposito Externo Entrega 48 horas.
-                      </span>
+                    <div className="content-product">
+                      <h3 className="titulosProductosLista">{product.title}</h3>
+                      <div className="price-mainLista">
+                        <span className="priceInfo">${product.price}</span>
+                        <span className="price-old">${product.oldprice}</span>
+                      </div>
+                      <div className="tags">
+                        <span className="tag tag-stock">
+                          Stock disponible: {product.stock}
+                        </span>
+                        <span className="tag tag-stock">
+                          Deposito Externo Entrega 48 horas.
+                        </span>
+                      </div>
                     </div>
                     <div className="buttonsToBuy">
                       <Button
@@ -39,6 +41,7 @@ export default function Item({ product }) {
                           color: "#0077f9",
                           backgroundColor: "white",
                           borderRadius: "4px",
+                          marginRight: "1rem",
                         }}
                         className="add-button"
                       >

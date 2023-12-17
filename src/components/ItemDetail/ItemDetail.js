@@ -161,7 +161,7 @@ const ItemDetail = ({ detailProduct }) => {
             ¡12 cuotas de ${(price / 12).toFixed(2)}!
           </div>
           <div className="tags">
-            <span className="tag tag-stock">
+            <span className="tag tag-stock ms-5">
               {noStock ? "No hay stock" : "En stock"}
             </span>
           </div>

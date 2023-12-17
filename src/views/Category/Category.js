@@ -22,29 +22,31 @@ const Category = () => {
       </div>
       <div style={{ display: "flex" }}>
         <div className="orderPerPrice">
-          <p className="titleOrderProducts"> Ordenar por:</p>
-          <div className="divFiltroPrecios">
-            <button
-              onClick={() => setData("minorCategory")}
-              className="btn btn-outline"
-              id="btnPriceFilter"
-            >
-              Menor precio
-            </button>
-            <button
-              onClick={() => setData("mayorCategory")}
-              className="btn btn-outline"
-              id="btnPriceFilter"
-            >
-              Mayor precio
-            </button>
-            <button
-              onClick={() => setData("default")}
-              className="btn btn-outline"
-              id="btnPriceFilter"
-            >
-              Vista normal
-            </button>
+          <div className="card-filters">
+            <p className="titleOrderProducts"> Ordenar por:</p>
+            <div className="divFiltroPrecios">
+              <button
+                onClick={() => setData("minorCategory")}
+                className="btn btn-outline"
+                id="btnPriceFilter"
+              >
+                Menor precio
+              </button>
+              <button
+                onClick={() => setData("mayorCategory")}
+                className="btn btn-outline"
+                id="btnPriceFilter"
+              >
+                Mayor precio
+              </button>
+              <button
+                onClick={() => setData("default")}
+                className="btn btn-outline"
+                id="btnPriceFilter"
+              >
+                Vista normal
+              </button>
+            </div>
           </div>
         </div>
         <div className="tiendaProductos">

@@ -82,7 +82,9 @@ export default function Tienda() {
                   value={isCheckedPlacas}
                   onChange={handleCheck}
                 />
-                <label htmlFor="checkbox">Placas de Vídeo </label>
+                <label htmlFor="checkbox" className="ms-2">
+                  Placas de Vídeo
+                </label>
               </div>
               <div>
                 <input
@@ -91,7 +93,9 @@ export default function Tienda() {
                   value={isCheckedProcesadores}
                   onChange={handleCheckProcesadores}
                 />
-                <label htmlFor="checkbox">Procesadores</label>
+                <label htmlFor="checkbox" className="ms-2">
+                  Procesadores
+                </label>
               </div>
               <div>
                 <input
@@ -100,7 +104,9 @@ export default function Tienda() {
                   value={isCheckedDiscos}
                   onChange={handleCheckDiscos}
                 />
-                <label htmlFor="checkbox">Díscos SSD</label>
+                <label htmlFor="checkbox" className="ms-2">
+                  Díscos SSD
+                </label>
               </div>
             </div>
           </div>
