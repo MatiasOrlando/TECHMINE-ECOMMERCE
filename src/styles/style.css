@@ -170,8 +170,9 @@
 .tituloProducto {
   font-family: "Roboto";
   text-align: center;
-  padding-top: 50px;
+  padding: 50px 20px 0px 20px;
   font-weight: bold;
+;
 }
 
 .price-main {
@@ -584,7 +585,7 @@
   margin-bottom: 100px;
 }
 .totalPrice {
-  margin-right: 260px;
+  margin-right: 35px;
   font-family: "Roboto";
 }
 
@@ -1032,5 +1033,8 @@ button:hover .button-text {
   padding: 1%;
   border-bottom: solid 1px rgb(230, 230, 230);
   margin-bottom: 10px;
+}
+.carousel.slide {
+  padding: 6rem;
 }
 

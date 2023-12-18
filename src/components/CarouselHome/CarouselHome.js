@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 
 const CarouselHome = () => {
   return (
-    <Carousel style={{ zIndex: "1" }}>
+    <Carousel style={{ zIndex: "1", padding: 0 }}>
       <Carousel.Item>
         <img
           className="d-block w-100"
